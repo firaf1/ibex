@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0
+}
+
+body {
+  background-color: #000000;
+  overflow: hidden;
+}
+	.crossfade  {
+    transition:5s;
+    animation: imageAnimation 30s infinite  ease-in-out;
+animation-direction: alternate-reverse;
+animation-timing-function: e;
+    backface-visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    height: 100%;
+    left: 0px;
+    height: 100vh;
+   
+    top: 0px;
+    width: 100%;
+  
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/001.jpg') no-repeat;
+    background-size: (100%);
+ 
+}
+
+ 
+
+@keyframes imageAnimation {
+  0% {
+    background-size: (150%);
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/001.jpg') no-repeat;
+
+  }
+  25% {
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/002.jpg') no-repeat;
+  }
+  50% {
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/003.jpg') no-repeat;
+  }
+  75% {
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/004.jpg') no-repeat;
+  }
+  100% {
+    
+    background-size: (100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.521), black),url('../front/css/images/005.jpg') no-repeat;
+  }
+}
+.crossfade{
+  padding-top: 30rem;
+}
