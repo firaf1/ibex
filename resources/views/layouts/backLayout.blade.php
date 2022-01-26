@@ -7,26 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>IBEX VLOG - ETHIOPIA</title>
-    <link rel="icon" type="image/x-icon" href="back/assets/img/favicon.ico"/>
-    <link href="back/assets/css/loader.css" rel="stylesheet" type="text/css" />
-    <script src="back/assets/js/loader.js"></script>
+    <link rel="icon" type="image/x-icon" href=" {{ asset('back/assets/img/favicon.ico')}}"/>
+    <link href=" {{ asset('back/assets/css/loader.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('back/assets/js/loader.js ') }}"></script>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-    <link href="back/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="back/assets/css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="back/assets/css/apps/contacts.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="back/assets/css/forms/switches.css">
-    <link rel="stylesheet" type="text/css" href="back/plugins/animate/animate.css">
-    <link href="back/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    <link href="back/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
-    <link href="back/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css" />
-    <link href="back/assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
-    <link href="back/plugins/notification/snackbar/snackbar.min.css" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/apps/contacts.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href=" {{ asset('back/assets/css/forms/switches.css')}}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('back/plugins/animate/animate.css')}}">
+    <link href=" {{ asset('back/plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/components/custom-modal.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/plugins/notification/snackbar/snackbar.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/elements/miscellaneous.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="back/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="back/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+    <link href=" {{ asset('back/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @livewireStyles
     <style>
@@ -94,44 +97,49 @@
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     @livewireScripts
-    <script src="back/assets/js/libs/jquery-3.1.1.min.js"></script>
-    <script src="back/bootstrap/js/popper.min.js"></script>
-    <script src="back/bootstrap/js/bootstrap.min.js"></script>
-    <script src="back/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="back/assets/js/app.js"></script>
+    <script src="{{ asset('back/assets/js/libs/jquery-3.1.1.min.js ') }}"></script>
+    <script src="{{ asset('back/bootstrap/js/popper.min.js ') }}"></script>
+    <script src="{{ asset('back/bootstrap/js/bootstrap.min.js ') }}"></script>
+    <script src="{{ asset('back/plugins/perfect-scrollbar/perfect-scrollbar.min.js ') }}"></script>
+    <script src="{{ asset('back/assets/js/app.js ') }}"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
-    <script src="back/assets/js/custom.js"></script>
+    <script src="{{ asset('back/assets/js/custom.js ') }}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="back/plugins/apex/apexcharts.min.js"></script>
-    <script src="back/assets/js/dashboard/dash_1.js"></script>
-    <script src="back/assets/js/custom.js"></script>
+    
+    <script src="{{ asset('back/plugins/apex/apexcharts.min.js ') }}"></script>
+    <script src="{{ asset('back/assets/js/dashboard/dash_1.js ') }}"></script>
+    <script src="{{ asset('back/assets/js/custom.js ') }}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
-    <script src="back/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="back/assets/js/apps/contact.js"></script>
-    <script src="back/plugins/blockui/jquery.blockUI.min.js"></script>
+    <script src="{{ asset('back/plugins/jquery-ui/jquery-ui.min.js ') }}"></script>
+    <script src="{{ asset('back/assets/js/apps/contact.js ') }}"></script>
+    <script src="{{ asset('back/plugins/blockui/jquery.blockUI.min.js ') }}"></script>
 
-<script src="back/plugins/blockui/custom-blockui.js"></script>
-<script src="back/assets/js/scrollspyNav.js"></script>
-    <script src="back/plugins/sweetalerts/sweetalert2.min.js"></script>
-    <script src="back/plugins/sweetalerts/custom-sweetalert.js"></script>
+<script src="{{ asset('back/plugins/blockui/custom-blockui.js ') }}"></script>
+<script src="{{ asset('back/assets/js/scrollspyNav.js ') }}"></script>
+    <script src="{{ asset('back/plugins/sweetalerts/sweetalert2.min.js ') }}"></script>
+    <script src="{{ asset('back/plugins/sweetalerts/custom-sweetalert.js ') }}"></script>
 
-    <script src="back/plugins/notification/snackbar/snackbar.min.js"></script>
+    <script src="{{ asset('back/plugins/notification/snackbar/snackbar.min.js ') }}"></script>
     <!-- END PAGE LEVEL PLUGINS -->
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    <script src="back/assets/js/components/notification/custom-snackbar.js"></script>
+    <script src="{{ asset('back/assets/js/components/notification/custom-snackbar.js ') }}"></script>
 
 
     <script>
 
 window.addEventListener('successfully_added', event => {
     $('.user_add_modal').modal('hide');
+    
+    $('.user_edit_modal').modal('hide');
+    $('#vlogModal').modal('hide');
+    
    
   const toast = swal.mixin({
     toast: true,
@@ -147,21 +155,96 @@ window.addEventListener('successfully_added', event => {
   })
 
 })
+
+window.addEventListener('editVlogModal', event => {
+    $('#editVlogModal').modal('show');
+     
+})
 window.addEventListener('deleted_confirm_modal', event => {
+    
+    $('#vlogDeletedModal').modal('show');
+    $('#blogDeletedModal').modal('show');
+    
+    $('#editVlogModal').modal('show');
+    
     $('#standardModal').modal('show');
 })
+window.addEventListener('open_cat_add_modal', event => {
+    $('#cat_delete').modal('show');
+})
+window.addEventListener('open_edit_cat_modal', event => {
+    $('#cat_edit').modal('show');
+})
 window.addEventListener('delete_toast', event => {
+    $('#blogDeletedModal').modal('hide');
+    $('#vlogDeletedModal').modal('hide');
     $('#standardModal').modal('hide');
     Snackbar.show({
         text:  event.detail.newName,
         actionTextColor: '#fff',
-        backgroundColor: '#1abc9c'
+        backgroundColor: '#e7515a'
+    });
+})
+
+window.addEventListener('success_toast', event => {
+    $('#cat_ad').modal('hide');
+    $('#cat_delete').modal('hide');
+    $('#cat_edit').modal('hide');
+    Snackbar.show({
+        text: event.detail.newName,
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+})
+window.addEventListener('warning_toast', event => {
+    Snackbar.show({
+        text: event.detail.newName,
+        actionTextColor: '#fff',
+        backgroundColor: '#e2a03f'
     });
 })
 
 
+Livewire.on('initializeCkEditor', function () {
+    console.log('hello...............')
+    CKEDITOR.replace('editor', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+ });
  
-      
+ @if (session('status'))
+ Snackbar.show({
+        text: 'Vlog Successfully Updated',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+@if (session('vlogAdded'))
+ Snackbar.show({
+        text: 'Vlog Successfully Added',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
+
+@if (session('blogUpdate'))
+ Snackbar.show({
+        text: 'Blog is Successfully Updated',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
+@if (session('blogAdded'))
+ Snackbar.show({
+        text: 'Blog is Successfully Updated',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
     </script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 </body>

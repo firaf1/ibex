@@ -8,7 +8,7 @@ underline">Dashboard</a>
 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
 @if(Route::has('register'))
-    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+<a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
 @endif
 @endauth
 </div>
@@ -46,11 +46,11 @@ underline">Dashboard</a>
     <link id="changeable-colors" rel="stylesheet" href="css/colors/blue.css" />
 
     <!-- End CSS Files -->
-
+    @livewireStyles
 </head>
 
 <body>
-<!-- 1ZAdv8B*#G6lo7 -->
+    <!-- 1ZAdv8B*#G6lo7 -->
 
 
     <!-- Home Section -->
@@ -96,126 +96,42 @@ underline">Dashboard</a>
 
 
 
-
+                    @if(Auth::check())
+                    <a href="{{ route('admin')}}" class="btn btn-primary mt-3">Dashboard </a>
+                    @else
                     <button class="btn btn-primary mt-3" onclick="myopen()">Login </button>
+                    @endif
 
                 </div><!-- End Home Texts -->
 
             </div>
         </div><!-- End Home Details -->
     </section><!-- End Home Section -->
-<div class="my-container "     id="mymodal" >
-
-	<div class="box " id="box">
-	<div class="row">
-                        <div class="col-sm-6 loginIcon" style="height:80vh">
-                            <img style="overflow:hidden; width:100%; height:100%;" class="wave" src="MY/login.svg">
-                        </div>
-
-                        <div class="col-sm-6  ">
-                            <br>
-                            <h3 style="text-align:center; font-weight:bold">Login To your Account</h3>
-                            <div class="box1">
-                                <div class="input-divone">
-                                    <p>User Name</p>
-                                    <div class="input-div">
-
-                                        <input placeholder="Phone Number" type="text" class="input">
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="input-divone">
-
-                                    <p>Password</p>
-                                    <div class="input-div">
-
-                                        <input type="password" placeholder="Password" class="input">
-                                    </div>
-                                </div>
-<div class="button-box">
-	<button type="submit">Login</button>
-</div>
-                            
-                            </div>
-                        </div>
-                    </div>
+    @livewire('login-request')
 
 
+    <script>
+    function myopen() {
 
-	</div>
-</div>
+        document.getElementById('mymodal').style.display = "block";
+        document.getElementById('box').style.height = "85vh";
+    }
 
+    function myclose() {
+        document.getElementById('mymodal').style.display = "none";
 
-    <div class="modal fade"  id="myModal">
-        <div class="modal-dialog modal-lg  " style="z-index:9999999">
-            <div class="modal-content">
+    }
 
+    document.getElementById("mymodal").addEventListener('click', e => {
+        if (e.target !== e.currentTarget) console.log("child clicked")
+        else {
+            document.getElementById('mymodal').style.display = "none";
+            document.getElementById('box').style.height = "0px";
+        }
+    });
+    </script>
 
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6" style="height:80vh">
-                            <img style="overflow:hidden; width:100%; height:100%;" class="wave" src="img/Login-bro.svg">
-                        </div>
-                        <div class="col-sm-6  ">
-                            <br>
-                            <h3 style="text-align:center; font-weight:bold">Login To your Account</h3>
-                            <div class="box">
-                                <div class="input-divone">
-                                    <p>User Name</p>
-                                    <div class="input-div">
-
-                                        <input placeholder="Phone Number" type="text" class="input">
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="input-divone">
-
-                                    <p>Password</p>
-                                    <div class="input-div">
-
-                                        <input type="text" placeholder="Password" class="input">
-                                    </div>
-                                </div>
-
-                                <div class="modal-login-botton">
-                                    <button type="submit">Login</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
- 
-<script>
-	function myopen(){
-		 
-		document.getElementById('mymodal').style.display="block";
-		document.getElementById('box').style.height="85vh";
-	}
-	function myclose(){
-		document.getElementById('mymodal').style.display="none";
-	
-	}
-
-	document.getElementById("mymodal").addEventListener('click', e => {
-  if(e.target !== e.currentTarget) console.log("child clicked") 
-  else {
-	document.getElementById('mymodal').style.display="none";
-	document.getElementById('box').style.height="0px";
-  }  
-});
-
-</script>
-
-	<script type="text/javascript" src="front/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="front/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="front/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="front/js/jquery.appear.js"></script>
     <script type="text/javascript" src="front/js/jquery.prettyPhoto.js"></script>
@@ -225,7 +141,7 @@ underline">Dashboard</a>
 
     <script type="text/javascript" src="front/js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="front/js/plugins.js"></script>
-
+    @livewireScripts
 </body>
 
 </html>

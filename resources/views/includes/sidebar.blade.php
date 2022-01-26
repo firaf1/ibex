@@ -28,48 +28,39 @@
                             <li>
                                 <a href="user"> User list </a>
                             </li>
-                            <li>
-                                <a href="apps_mailbox.html"> Mailbox  </a>
-                            </li>
-                            <li>
-                                <a href="apps_todoList.html"> Todo List </a>
-                            </li>                            
-                            <li>
-                                <a href="apps_notes.html"> Notes </a>
-                            </li>
-                            <li>
-                                <a href="apps_scrumboard.html">Scrumboard</a>
-                            </li>
-                            <li>
-                                <a href="apps_contacts.html"> Contacts </a>
-                            </li>
-                            <li>
-                                <a href="#appInvoice" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Invoice <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="appInvoice" data-parent="#app"> 
-                                    <li>
-                                        <a href="apps_invoice-list.html"> List </a>
-                                    </li>
-                                    <li>
-                                        <a href="apps_invoice-preview.html"> Preview </a>
-                                    </li>
-                                    <li>
-                                        <a href="apps_invoice-add.html"> Add </a>
-                                    </li>
-                                    <li>
-                                        <a href="apps_invoice-edit.html"> Edit </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="apps_calendar.html"> Calendar </a>
-                            </li>
+                             
                         </ul>
                     </li>
                     <li class="menu">
-                        <a href="fonticons.html" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('language') }}" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                <span>Language</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="category" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                                <span>Font Icons</span>
+                                <span>Category</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu">
+                        <a href="{{route('vlog')}}" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                                <span>Vlog</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu">
+                        <a href="{{route('blog')}}" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                <span>Blog</span>
                             </div>
                         </a>
                     </li>

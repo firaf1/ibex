@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="m-3 btn-group">
-                <a href="#" data-toggle="modal" data-target="#AddcategoryModal  "   class="btn btn-info"> Add New
+                <a href="#" data-toggle="modal" data-target="#AddcategoryModal  " class="btn btn-info"> Add New
 
-                <i class="fa fa-plus"></i>
+                    <i class="fa fa-plus"></i>
                 </a>
             </div>
             <div class="card card-topline-aqua">
@@ -23,7 +23,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                     
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -31,18 +31,17 @@
                                 @foreach($catagries as $staff)
                                 <tr>
                                     <td>
-                                       {{ $staff->id}}
+                                        {{ $staff->id}}
                                     </td>
                                     <td>{{ $staff->name }}</td>
-                                    
+
                                     <td>
-                                        <button wire:click="editCategory({{$staff->id}})"
-                                            data-toggle="modal" data-target="#EditcategoryModal  "  class="btn btn-tbl-edit btn-xs">
+                                        <button wire:click="editCategory({{$staff->id}})" data-toggle="modal"
+                                            data-target="#EditcategoryModal  " class="btn btn-tbl-edit btn-xs">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <button   wire:click="deleteStaff({{$staff->id}})"
-                                        data-toggle="modal" data-target="#DeletecategoryModal"
-                                            class="btn btn-tbl-delete btn-xs">
+                                        <button wire:click="deleteStaff({{$staff->id}})" data-toggle="modal"
+                                            data-target="#DeletecategoryModal" class="btn btn-tbl-delete btn-xs">
                                             <i class="fa fa-trash-o "></i>
                                         </button>
                                     </td>
@@ -55,8 +54,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" wire:ignore.self id="AddcategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" wire:ignore.self id="AddcategoryModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,18 +65,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name=""wire:model="name" class="form-control" id="">
+                    <input type="text" name="" wire:model="name" class="form-control" id="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button  id="confirmDelete" type="button"
-                        class="btn btn-primary" wire:click='submitCategory'>save</button>
+                    <button id="confirmDelete" type="button" class="btn btn-primary"
+                        wire:click='submitCategory'>save</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" wire:ignore.self id="EditcategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" wire:ignore.self id="EditcategoryModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -87,7 +86,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <input type="text" name=""wire:model="name" class="form-control" id="">
+                    <input type="text" name="" wire:model="name" class="form-control" id="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,8 +97,8 @@
         </div>
     </div>
 
-    <div class="modal fade" wire:ignore.self id="DeletecategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" wire:ignore.self id="DeletecategoryModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

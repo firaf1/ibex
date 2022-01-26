@@ -14,8 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.list');
+        return view('admin.category');
     }
+    public function language()
+    {
+        return view('admin.language');
+    }
+
 
     /**
      * Show the form for creating a new resource.

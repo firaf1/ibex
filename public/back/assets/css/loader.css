@@ -21,3 +21,29 @@ div#load_screen .loader-content {
 .spinner-grow {
     color: #304aca;
 }
+
+  .avatar {
+     margin-left: 5px;
+     margin-right: 5px;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;   
+}
+ .avatar-title {
+    border-radius: 12px;
+    position: relative;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    background-color: rgb(255, 225, 226);
+    color: #e7515a;
+}
+ .avatar-title {
+    background-color: rgb(186, 231, 255);
+    color: #2196f3;
+}
