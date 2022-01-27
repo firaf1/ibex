@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
   
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\vlogController;
@@ -67,7 +68,7 @@ Route::get('locke-screen', function(){
 })->name('lockScreen');
 });
 
-
+Route::get('home', [HomeController::class, 'index'])->name('home');
 
 
 

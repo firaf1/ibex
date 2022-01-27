@@ -16,7 +16,7 @@
 
 .box{
 
-	transition: 5s ease-in-out;
+	 
 	margin-left: 10%;
 	 margin-top: 5vh;
 	width: 80%;
@@ -25,6 +25,10 @@
 	border:2px solid rgb(216, 216, 216);
 	border-radius: 10px;
 	background-color: white;
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.7s;
+	animation-name: animatetop;
+	animation-duration: 0.7s;
 }
 
 .my-container{
@@ -39,7 +43,16 @@ overflow: hidden;
 	height: 100%;
 	background-color: #0b0f504a;
 }
-
+/* Add Animation */
+@-webkit-keyframes animatetop {
+	from {top:-300px; opacity:0} 
+	to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+	from {top:-300px; opacity:0}
+	to {top:0; opacity:1}
+  }
 .box1 input{
 	border:none;
 	width: 100%;
