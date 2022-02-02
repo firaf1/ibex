@@ -52,7 +52,18 @@
                 <div class="image5 pattern-black"></div>
                 <!-- End Slider Images -->
             </div>
+<div class="lang">
+    <ul>
+ 
 
+            
+        <a href="{{ route('lang', 'en') }}"><li style="<?php if($sessionLang == 'en')  echo 'background-color: #d10303'; ?>" >English</li></a>
+       
+       
+       <a href="{{ route('lang', 'am') }}"> <li style=" <?php if($sessionLang == 'am')  echo 'background-color: #d10303;' ?>" >Amharic</li></a>
+     
+    </ul>
+</div>
             <div class="home-details-tb absolute">
                 <!-- Home Details Inner -->
                 <div class="relative home-details-inner">
@@ -63,28 +74,28 @@
                     <div class="hometexts">
                         <!-- Slide Texts -->
                         <ul class="slide-text condensed">
-                            <li class="hometext bold uppercase">Welcome to <span class="colored"> ibex </span></li>
-                            <li class="hometext bold uppercase">We Love to <span class="colored"> Entertain</span></li>
-                            <li class="hometext bold uppercase">We Are <span class="colored"> Creative</span></li>
+                            <li class="hometext bold uppercase">@lang('welcome_to') <span class="colored"> @lang('ibex') </span></li>
+                            <li class="hometext bold uppercase">@lang('we_love_to')</li>
+                            <li class="hometext bold uppercase">@lang('we_are') <span class="colored"> @lang('creative')</span></li>
                         </ul>
                     </div>
                     <!-- Fixed Text -->
-                    <h1 class="fixed-text uppercase bold condensed">the goods you need now !</h1>
+                    <h1 class="fixed-text uppercase bold condensed">@lang('the_good_you_need') !</h1>
                     <!-- Home Categories -->
                     <ul class="home-categories">
-                        <li class="h-item uppercase "> opportunities</li>
-                        <li class="h-item uppercase ">Game Show</li>
-                        <li class="h-item uppercase ">Entertainment</li>
-                        <li class="h-item uppercase ">Product Review</li>
+                        <li class="h-item uppercase "> @lang('oportunity')</li>
+                        <li class="h-item uppercase ">@lang('game_show')</li>
+                        <li class="h-item uppercase ">@lang('entertainment')</li>
+                        <li class="h-item uppercase ">@lang('product_review')</li>
 
                     </ul>
 
 
 
                     @if(Auth::check())
-                    <a href="{{ route('admin')}}" class="btn btn-primary mt-3">Dashboard </a>
+                    <a href="{{ route('admin')}}" class="btn btn-primary mt-3">@lang('dashboard') </a>
                     @else
-                    <button class="btn btn-primary mt-3" onclick="myopen()">Login </button>
+                    <button class="btn btn-primary mt-3" onclick="myopen()">@lang('login') </button>
                     @endif
 
                 </div><!-- End Home Texts -->

@@ -16,6 +16,7 @@ protected $rules = [
     'userName' => 'required'
 ];
 public function login(){
+    
     $this->validate();
     $user = User::where('phone_number', $this->userName)->first();    
 
@@ -25,6 +26,9 @@ public function login(){
     if(Hash::check($this->password, $DB_password)){
          
         Auth::login($user);
+        if(Auth::user()->role == "Agent"){
+            redirect(route('admin'));
+        }
         redirect(route('admin'));
     }else{
         //  dd("ddddd");

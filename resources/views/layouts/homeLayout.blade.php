@@ -41,7 +41,7 @@
 <link  href="{{ asset('front/home/js/revolution-slider/css/settings.css')}}" rel="stylesheet" type="text/css"/>
 <link  href="{{ asset('front/home/js/revolution-slider/css/layers.css')}}" rel="stylesheet" type="text/css"/>
 <link  href="{{ asset('front/home/js/revolution-slider/css/navigation.css')}}" rel="stylesheet" type="text/css"/>
-
+<link rel="stylesheet" href="{{ asset('front/home/css/myHome.css') }}">
 <!-- CSS | Theme Color -->
 <link href="{{ asset('front/home/css/colors/theme-skin-color-set-1.css')}}" rel="stylesheet" type="text/css">
 
@@ -56,6 +56,7 @@
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
 
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -63,9 +64,11 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
 <![endif]-->
 
+@livewireStyles
 
+<style>
 
-
+</style>
 
 
 
@@ -82,7 +85,7 @@
           <div class="col-md-7">
             <div class="widget no-border m-0">
               <ul class="list-inline sm-text-center mt-5">
-                <li> <i class="fa fa-phone text-theme-colored"></i> ይደውሉልን<a href="#">+251910804901</a> </li>
+                <li> <i class="fa fa-phone text-theme-colored"></i>   @lang('call')  <a href="#">+251910804901</a> </li>
                 <li> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="#">info@ibexvlog.com</a> </li>
               </ul>
             </div>
@@ -92,7 +95,9 @@
               <ul>
           
                 
-               <li><a href="https://en.ethiotutor.net"><font color="red">English</font></a><a href="https://www.ethiotutor.net/index.html"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;አማርኛ</font></a><a href="logout.php"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;Logout</font></a></li>
+               <li><a href="{{ route('lang', 'en') }}"><font color="red">English</font></a>
+               <a href="{{ route('lang', 'am') }}"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;አማርኛ</font></a>
+               <a href="{{ route('user-logout') }}"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;Logout</font></a></li>
 
                
               </li>
@@ -102,36 +107,77 @@
         </div>
       </div>
     </div>
-    <div class="header-nav">
-      <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+    <div class="header-nav" >
+      <div class="header-nav-wrapper navbar-scrolltofixed bg-white" >
         <div class="container">
           <nav id="menuzord-right" class="menuzord default">
             <a class="menuzord-brand pull-left flip" href="javascript:void(0)">
               <img src="{{ asset('front/home/images/logo-wide.png')}}" alt="">
             </a>
             <ul class="menuzord-menu">
-              <li class="active"><a href="index.html">ዋና ገፅ</a>
+              <li class="active"><a href="/home"> @lang('home') </a>
                 </li>
                
              
        
-              <li><a href="about.html">ስለ እኛ</a></li>
+              <li><a href="{{ route('about') }}"> @lang('aboutUs') </a></li>
               
-              <li><a href="subscribe.html">አባል ይሁኑ</a></li>
+             
               
-              <li><a href="#home">መረጃዎች</a>
+              <li><a href="#home"> @lang('entertainment')</a>
                 <ul class="dropdown">
-                  <li><a href="course6.html">አይቤክስ Tech</a></li>
-                  <li><a href="course1.html">አይቤክስ opportunities </a></li>
+                  @foreach ($categories as $category)
+                  <li><a href="{{ route('catagoryVlogList', $category->title) }}">{{ $category->title }}</a></li>
+                  @endforeach
+                
+                  <!-- <li><a href="course1.html">አይቤክስ opportunities </a></li>
                   <li><a href="course2.html">አይቤክስ Game Show </a></li>
                   <li><a href="course3.html">አይቤክስ Entertainment </a></li>
-                  <li><a href="course4.html">አይቤክስ Product Review </a></li>
+                  <li><a href="course4.html">አይቤክስ Product Review </a></li> -->
                   
                  
                 </ul>
-              </li>
-              <li><a href="law.html">ደንብና ግዴታዎች</a></li>
-              <li><a href="contact.html">ያግኑች</a></li>
+              </li> 
+              <li><a href="{{ route('blogsList') }}"> @lang('blogs')</a></li>
+              <li><a href="{{ route('contact') }}">@lang('contact_us')</a></li>
+              @if (Auth::check())
+                
+              <li>
+              @if (Auth::user()->photo != null)
+              <a href="contact.html" style="width: 60px; height: 60px; border-radius:50%;border:4px solid #1F386B;  margin-top:-1rem;  overflow:hidden; padding:0px;" >
+              
+              <img src="{{ asset(Auth::user()->photo) }}" style="width:100%; height:100%;" alt="" srcset="">
+              </a>
+                        @else
+                        <a href="" class="avatar avatar-xl "  style="margin-left:1rem; background:#bae7ff; width:50px; height:50px; border-radius:50%; 
+                        display: inline-flex;
+                        color:#2196f; font-weight:bold;
+    align-items: center;
+    justify-content: center;
+
+                        ">
+                            <span class="avatar-title">
+                                <?php 
+                                $position = strpos(Auth::user()->full_name, ' ');
+                                if($position != 0)
+                                echo substr( Auth::user()->full_name, 0, 1). Auth::user()->full_name[$position+1];
+                                else    echo substr( Auth::user()->full_name, 0, 1);
+
+?>
+                            <!-- {{ Auth::user()->full_name }} -->
+                        </span>
+                        </a>
+                        @endif
+
+
+
+
+
+              
+
+              
+            </li>
+              @endif
              
              
              
@@ -154,10 +200,9 @@
       <div class="row">
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <img class="mt-10 mb-15" alt="" src="{{ asset('front/home/images/logo-wide-white.png')}}">
-            <p class="font-16 mb-10">ግባችን በቴክኖሎጂ የሰለጠነ ዜጋ መፍጠር ነው!
-ኢትዮቲቶር ልምድና ትምህርት ያላቸው የኢንፎርሜሽን ቴክኖሎጂ ባለሙያዎችን ያሉት ፡፡በኮምፒተር ሳይንስ ምህንድስና እና በመረጃ ቴክኖሎጂ መስክ የብቃት ማረጋገጫ ያልው ድርጅት ነው።</p>
-            <a class="font-14" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+          <img src="{{ asset('front/home/images/logo-wide.png')}}" alt="">
+            <p class="font-16 mb-10">@lang('our_goal') </p>
+            <a class="font-14" href="{{route('about')}}"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
             <ul class="styled-icons icon-dark mt-20">
               <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s" data-wow-offset="10"><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
               <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s" data-wow-offset="10"><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
@@ -169,29 +214,20 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <h5 class="widget-title line-bottom">የአይሲት መረጃዎች</h5>
+            <h5 class="widget-title line-bottom">@lang('information')</h5>
             <div class="latest-posts">
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" src="{{ asset('front/home/images/blog/blog1.jpg')}}"></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="blog1.html">አይ.ቲ.ቲ የዲጂታል ስካውት ፕሮጄክቶችን ከ MoSHE እና GIZ ጋር በመተባበር ይጀምራል</a></h5>
-          
-                </div>
-              </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" src="{{ asset('front/home/images/blog/blog3.jpg')}}"></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="blog3.html">የአፍሪካ የፈጠራ ሳምንት ዓላማ አዳዲስ የአፍሪካ ሥራ ፈጣሪዎች... </a></h5>
-                  <p class="post-date mb-0 font-12">OCT 3, 2020</p>
-                </div>
-              </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" src="{{ asset('front/home/images/blog/blog5.jpg')}}"></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="blog2.html">የአሊባባ ዲጅታል ግብይት ስኬት</a></h5>
-                  <p class="post-date mb-0 font-12">ጃክ ማ በ 1990 ዎቹ መጀመሪያ ወደ አሜሪካ ሲሄድ በይነመረቡ ተረዳ ፡፡ ከአሜሪካ በተለየ መልኩ ቻይና አሁንም የበየነመረብን አብዮት አልተከተለችም ፡፡</p>
-                </div>
-              </article>
+               @foreach ($blogs as $blog)  
+               @if($loop->index < 3 )
+               
+                <article class="post media-post clearfix pb-0 mb-10">
+                  <a href="#" class="post-thumb"><img style=" width:25%;" alt="" src="{{ asset($blog->image)}}"></a>
+                  <div class="post-right">
+                    <h5 class="post-title mt-0 mb-5"><a href="blog2.html">{{$blog->title}}</a></h5>
+                    <!-- <p class="post-date mb-0 font-12">ጃክ ማ በ 1990 ዎቹ መጀመሪያ ወደ አሜሪካ ሲሄድ በይነመረቡ ተረዳ ፡፡ ከአሜሪካ በተለየ መልኩ ቻይና አሁንም የበየነመረብን አብዮት አልተከተለችም ፡፡</p> -->
+                  </div>
+                </article>
+                @endif
+               @endforeach 
             
             </div>
           </div>
@@ -210,7 +246,7 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <h5 class="widget-title line-bottom">ያግኙን</h5>
+            <h5 class="widget-title line-bottom">@lang('contact_us')</h5>
             <ul class="list-border">
               <li><a href="#">+251901116038</a></li>
               <li><a href="#">info@ethiotutor.net</a></li>
@@ -261,7 +297,24 @@
   </footer>
   <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 </div>
+<div id="snackbar">Your Comment is Successfully Submited We will get you soon</div>
 <!-- end wrapper --> 
+@livewireScripts
+
+<script>
+  
+
+
+window.addEventListener('successfully_added', event => {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+})
+
+   
+</script>
+
 
 <!-- Footer Scripts --> 
 <!-- JS | Custom script for all pages --> 

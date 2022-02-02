@@ -3,6 +3,9 @@
             <nav id="sidebar">
                 <div class="shadow-bottom"></div>
                 <ul class="list-unstyled menu-categories" id="accordionExample">
+                    @if (Auth::user()->role == "Admin")
+                        
+                  
                     <li class="menu">
                         <a href="admin" data-active="true"   class="dropdown-toggle">
                             <div class="">
@@ -64,9 +67,11 @@
                             </div>
                         </a>
                     </li>
+                    @endif
    
                 </ul>
                 
             </nav>
 
+         
         </div>

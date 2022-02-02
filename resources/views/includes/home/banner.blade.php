@@ -33,7 +33,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:700;">አይቤክስ Vlog
+                  style="z-index: 7; white-space: nowrap; font-weight:700;">@lang('ibex') Vlog
                 </div>
   
                 <!-- LAYER NR. 2 -->
@@ -58,7 +58,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:500;">ቴክ : ኢንተርቴይመንት : ጌም ሾው : ፕሮዳክት ረቪው : ኦፖርቹኒትይ ቪሎግ
+                  style="z-index: 7; white-space: nowrap; font-weight:500;">@lang('tech_game_show')
                 </div>
   
                 <!-- LAYER NR. 3 -->
@@ -138,7 +138,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:400; border-radius: 30px;">የተሟላ የቪዲዮ መዝናኛ! 
+                  style="z-index: 7; white-space: nowrap; font-weight:400; border-radius: 30px;">@lang('video_ent')
                 </div>
   
                 <!-- LAYER NR. 2 -->
@@ -163,7 +163,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:700; border-radius: 30px;">Ibex ኢንተርቴይመንት
+                  style="z-index: 7; white-space: nowrap; font-weight:700; border-radius: 30px;">@lang('ibex') @lang('entertainment')
                 </div>
   
                 <!-- LAYER NR. 3 -->
@@ -243,7 +243,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:600;">Ibex ቴክ 
+                  style="z-index: 7; white-space: nowrap; font-weight:600;">@lang('ibex') @lang('tech')
                 </div>
   
                 <!-- LAYER NR. 2 -->
@@ -268,7 +268,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:600;">አዳዲስ የቴክኖሎጂይ መረጃዎች ያግኙ።
+                  style="z-index: 7; white-space: nowrap; font-weight:600;">@lang('get_latest')
                 </div>
   
                 <!-- LAYER NR. 3 -->

@@ -13,6 +13,50 @@
 	@import url(http://fonts.googleapis.com/css?family=Playball);
 
 /* Main Styles */
+.lang{
+	/* background-color: red; */
+	position:fixed;
+	top:1rem; 
+	right: 1rem;
+	z-index: 999999999999999999;
+}
+.lang ul li{
+	border:2px solid #f36e6e;
+	padding: 1rem;
+	border-radius: 10px;
+	color: white;
+	margin-left:1rem;
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .box{
 

@@ -19,7 +19,7 @@
                          <div class="sm-height-auto bg-theme-colored">
                              <div class="text-center pt-10 pb-10">
                                  <i class="fa fa-user text-white font-64"></i>
-                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">ኦንላይን መረጃ ንሰጣለን</a>
+                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">@lang('online_information')</a>
                                  </h4>
                              </div>
                          </div>
@@ -29,7 +29,7 @@
                          <div class="sm-height-auto bg-theme-colored-darker2">
                              <div class="text-center pt-10 pb-10">
                                  <i class="fa fa-comments-o text-white font-64"></i>
-                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">ኦንላይን ጥያቄ ንመልሳለን</a>
+                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">@lang('online_answer')</a>
                                  </h4>
                              </div>
                          </div>
@@ -40,7 +40,7 @@
                          <div class="sm-height-auto bg-theme-colored-darker4">
                              <div class="text-center pt-10 pb-10">
                                  <i class="fa fa-mobile text-white font-64"></i>
-                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">በዚ ስልክ ቁ ያግኙን
+                                 <h4 class="text-uppercase mt-10"><a href="#" class="text-white">@lang('you_can_contact_us')
                                          +251910804901</a></h4>
                              </div>
                          </div>
@@ -57,8 +57,7 @@
                      <div class="call-to-action pt-40 pb-30 mb-20 border-1px bg-lighter">
                          <div class="row">
                              <div class="col-md-6">
-                                 <h5>ለ 3 ቀን በነፃ አገልግሎት ያገኛሉ ፥ በቀን በምንሰጠው አገልግሎት 2ብር ይከፍላሉ። አገልግሎቱ ማቋረጥ ከፈለጉ ወደ 9094 stop
-                                     ብለው ይላኩ። <a href="law.html">
+                                 <h5>@lang('free_service') <a href="law.html">
                                          <font color="blue" size="2px">Terms and conditions</font>
                                      </a></h5>
 
@@ -259,9 +258,9 @@
                                              class="media-left pull-left mr-30 mr-sm-15"><i
                                                  class="fa fa-user text-white"></i></a>
                                          <div class="media-body">
-                                             <h4 class="media-heading heading title"> የአትዮቲቶር አገልግሎት</h4>
-                                             <p>መሰራታዊ የአይሲቲና የአይሲቲ ስራ ፈጠራ ቲቶሪያል ኦንላይን በጥራት ያቀርባል።
-                                                 <a href="#"><i class="fa fa-arrow-circle-right font-14"></i></a>
+                                             <h4 class="media-heading heading title"> @lang('our_service')</h4>
+                                             <p>@lang('basic_it')
+                                               
                                              </p>
                                          </div>
                                      </div>
@@ -271,9 +270,9 @@
                                              class="media-left pull-left mr-30 mr-sm-15"><i
                                                  class="fa fa-comments-o text-white"></i></a>
                                          <div class="media-body">
-                                             <h4 class="media-heading heading title">የአትዮቲቶር ኦንላይን ቻት ቦክስ</h4>
-                                             <p>ጥያቄ ወይም ሃሳብ ካለቦት በ ኢትዮቲቶር የ ኦንላይን ቻት ቦክስ(chat box) መልክት መላክ ይችላሉ።
-                                                 <a href="#"><i class="fa fa-arrow-circle-right font-14"></i></a>
+                                             <h4 class="media-heading heading title">@lang('online_chat_box')</h4>
+                                             <p>@lang('question_or_suggestion')
+                                               
                                              </p>
                                          </div>
                                      </div>
@@ -283,9 +282,9 @@
                                              class="media-left pull-left mr-30 mr-sm-15"><i
                                                  class=" fa fa-credit-card text-white"></i></a>
                                          <div class="media-body">
-                                             <h4 class="media-heading heading title">የአትዮቲቶር ክፍያ</h4>
-                                             <p>ለ 3 ቀን በነፃ አገልግሎት ያገኛሉ ፥ በቀን በምንሰጠው አገልግሎት 2ብር ይከፍላሉ።
-                                                 <a href="#"><i class="fa fa-arrow-circle-right font-14"></i></a>
+                                             <h4 class="media-heading heading title">@lang('ibex_paymant')</h4>
+                                             <p>@lang('three_day_free')
+                                               
                                              </p>
                                          </div>
                                      </div>
