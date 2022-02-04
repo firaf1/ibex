@@ -29,7 +29,7 @@
   "benefit_of_our_service": "Benefits of services",
   "about_content2": "Most of us have a laid back attitude when it comes to teaching. As a result, EthioTitor Online is a digital platform that offers IT courses and has been involved in the digital education process in Ethiopia.\n\n24 * 7 Accessibility Ethiotitoor teaching services are not a matter of geography and time ፡ Learning can occur anytime, anywhere.\nSaves money and time (and no driving) Students learn from the comfort of your own home. No driving or rush hour traffic saves time and money. An online platform also offers time-saving benefits.\n\nThe importance of strategic technology in educational technology This teaches the student to use the digital platform in a systematic and effective way, which can be transferred directly from the academic environment to the corporate environment.",
   "vision": "Our vision is to provide 100% customer satisfaction by providing quality basic IT and IT entrepreneurship training at affordable prices.",
-  "week": "EthioTitor teachers have extensive experience with ICT Innovation Gatex Technology.",
+  "week": "IBEX teachers have extensive experience with ICT Innovation Gatex Technology.",
   "vision2": "vision",
   "our_service": "IBEX Service",
   "online_chat_box": "IBEX online chat box",
@@ -69,5 +69,9 @@
   "blogs": "blogs",
   "our_latest_blog": "our latest blog",
   "read_more": "read more",
-  "related_blog": "Related Blog"
+  "related_blog": "Related Blog",
+  "login_to_account": " ",
+  "user_name": "user name ",
+  "password": "password",
+  "wrong_credential": "These credentials do not match our records."
 }

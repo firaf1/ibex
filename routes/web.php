@@ -47,9 +47,9 @@ Route::middleware(['lang'])->group(function () {
 
                 Route::post('ckeditor/image_upload', [vlogController::class, 'upload'])->name('upload');
 
-                Route::get('user-profile', [UserController::class, 'profile'])->name('profile');
+               
             });
-
+            Route::get('user-profile', [UserController::class, 'profile'])->name('profile');
             Route::get('Contact-us', function () {
                 $blogs = Blog::where('status', '=', '1')->orderBy('created_at', 'desc')->take(4)->get();
                 return view('home.contact_us', compact(['blogs']));
@@ -81,6 +81,11 @@ Route::middleware(['lang'])->group(function () {
         
     });
     Route::get('agent',[agentController::class, 'index'] )->name('agetIndex');
+    Route::get('Subscriber', [agentController::class, 'subscriber'] )->name('subscriber');
+    Route::get('Agent-Contact', [agentController::class, 'Contact'] )->name('agetContact');
+    Route::post('Agent-Contact-store', [agentController::class, 'AddAgentMessage'] )->name('addAgentMessage');
+
+    
 
     Route::get('lang/{id}', [HomeController::class, 'setLang'])->name('lang');
     Route::get('about-us', function () {
@@ -90,10 +95,13 @@ Route::middleware(['lang'])->group(function () {
 
     Route::get('/', function () {
         
-        if(Session::has('locale'))
-        $sessionLang = Session::get('locale');
+        if(Session::has('locale')){
+
+            $sessionLang = Session::get('locale');
+            
+        }
         else{
-            Session::put("locale", "en");
+           $sessionLang = Session::put("locale", "en");
         }
     //   dd(App::getLocale());
     

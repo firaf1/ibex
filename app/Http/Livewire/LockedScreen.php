@@ -20,6 +20,10 @@ class LockedScreen extends Component
          
              $user->isLock = 0;
              $user->save();
+             if($user->role == "Agent"){
+                redirect(route('agetIndex'));
+             }
+             if($user->role == "Admin")
             redirect(route('admin'));
         }else{
             //  dd("ddddd");

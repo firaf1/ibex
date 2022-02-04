@@ -27,8 +27,8 @@ public function login(){
          
         Auth::login($user);
         if(Auth::user()->role == "Agent"){
-            redirect(route('admin'));
-        }
+            redirect(route('agetIndex'));
+        } else
         redirect(route('admin'));
     }else{
         //  dd("ddddd");

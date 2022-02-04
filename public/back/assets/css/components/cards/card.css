@@ -28,8 +28,7 @@
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
-.component-card_1 .card-text { color: #888ea8; }
-
+ 
 /*
 	Component Card 2
 */
@@ -37,7 +36,7 @@
 .component-card_2 {
     border: 1px solid #e0e6ed;
     border-radius: 6px;
-    width: 18rem;
+     
     margin: 0 auto;
     box-shadow: 4px 6px 10px -3px #bfc9d4;
 }
@@ -48,10 +47,7 @@
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
-.component-card_2 .card-text {
-    color: #888ea8;
-    line-height: 22px;
-}
+ 
 .component-card_2 a.btn-primary {
     margin: 26px 0 0 0;
     padding: 10px 16px;
@@ -62,16 +58,32 @@
 /*
 	Component Card 3
 */
-
+.component-card_30{
+    background: #ffc107 ;
+    color: white;
+    border: none; 
+    border-radius: 8px;
+     
+     
+    margin: 0 auto;
+    box-shadow: 4px 6px 10px -3px #bfc9d4;
+}
+.card-text{
+    color:white;
+}
 .component-card_3 {
     border: none; 
     border-radius: 8px;
-    background: #3b3f5c;
-    width: 18rem;
+    background: #dc3545 ;
+   
     margin: 0 auto;
     box-shadow: 4px 6px 10px -3px #bfc9d4;
 }
 .component-card_3 .card-body {
+    padding: 22px 20px;
+    text-align: center;
+}
+.component-card_30 .card-body {
     padding: 22px 20px;
     text-align: center;
 }
@@ -82,6 +94,13 @@
     border-radius: 50%;
 }
 .component-card_3 .card-body h5.card-user_name {
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.component-card_30 .card-body h5.card-user_name {
     font-size: 15px;
     color: #fff;
     letter-spacing: 1px;
@@ -98,12 +117,7 @@
     color: #e2a03f;
 }
 .component-card_3 .card-body .card-star_rating svg.fill { fill: #e2a03f; }
-.component-card_3 .card-body .card-text {
-    color: #e3e4eb;
-    font-style: italic;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
+ 
 
 /*
 	Component Card 4
@@ -148,14 +162,7 @@
 	width: 16px;
     vertical-align: bottom;
 }
-.component-card_4 .card-text {
-    color: #515365;
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    line-height: 23px;
-}
-
+ 
 /*
 	Component Card 5
 */
@@ -196,11 +203,7 @@
     letter-spacing: 1px;
     margin-bottom: 0
 }
-.component-card_5 .card-body .card-text {
-    color: #f1f2f3;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
+ 
 
 /*
 	Component Card 6
@@ -242,13 +245,7 @@
     letter-spacing: 1px;
     margin-bottom: 0;
 }
-.component-card_6 .card-body .card-text {
-    color: #515365;
-    font-style: italic;
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
+ 
 .component-card_6 .card-body .card-star_rating svg {
     width: 12px;
     color: #e2a03f;
@@ -265,7 +262,7 @@
     background-color: #4361ee;
     color: #fff;
     border: none;
-    width: 18rem;
+
     margin: 0 auto;
     -webkit-box-shadow: 4px 6px 10px -3px #bfc9d4;
     box-shadow: 4px 6px 10px -3px #bfc9d4;
@@ -274,11 +271,8 @@
     padding: 23px 10px;
     text-align: center;
 }
-.component-card_7 .card-text {
-    color: #fff;
-    margin-bottom: 20px;
-}
-.component-card_7 .rating-count {
+ 
+  .rating-count {
     color: #fff;
     margin-bottom: 20px;
 }
@@ -370,10 +364,7 @@
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
-.component-card_9 .card-text {
-    color: #888ea8;
-    line-height: 22px;
-}
+ 
 .component-card_9 .meta-info {
 	position: relative;
     display: flex;

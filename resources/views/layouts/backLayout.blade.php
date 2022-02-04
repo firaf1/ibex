@@ -25,14 +25,35 @@
     <link href=" {{ asset('back/assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css" />
     <link href=" {{ asset('back/assets/css/elements/miscellaneous.css')}}" rel="stylesheet" type="text/css" />
     <link href=" {{ asset('back/assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('back/assets/css/components/tabs-accordian/custom-tabs.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href=" {{ asset('back/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href=" {{ asset('back/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/assets/css/components/cards/card.css') }}">    
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @livewireStyles
     <style>
+        
+        .blockui-growl-message {
+            display: none;
+            text-align: left;
+            padding: 15px;
+            background-color: #455a64;
+            color: #fff;
+            border-radius: 3px;
+        }
+        .blockui-animation-container { display: none; }
+        .multiMessageBlockUi {
+            display: none;
+            background-color: #455a64;
+            color: #fff;
+            border-radius: 3px;
+            padding: 15px 15px 10px 15px;
+        }
+        .multiMessageBlockUi i { display: block }
+   
    .display-none{
        display: none;
    }
@@ -87,9 +108,7 @@
                 <div class="footer-section f-section-1">
                     <p class="">Copyright © 2021 <a target="_blank" href="https://designreset.com/">DesignReset</a>, All rights reserved.</p>
                 </div>
-                <div class="footer-section f-section-2">
-                    <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
-                </div>
+               
             </div>
 </div>
         </div>
@@ -126,6 +145,9 @@
     <script src="{{ asset('back/plugins/sweetalerts/custom-sweetalert.js ') }}"></script>
 
     <script src="{{ asset('back/plugins/notification/snackbar/snackbar.min.js ') }}"></script>
+    <script src="{{ asset('back/plugins/blockui/jquery.blockUI.min.js') }}"></script>
+
+<script src="{{ asset('back/plugins/blockui/custom-blockui.js') }}"></script>
     <!-- END PAGE LEVEL PLUGINS -->
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
@@ -134,8 +156,11 @@
 
     <script>
 
+
 window.addEventListener('successfully_added', event => {
     $('.user_add_modal').modal('hide');
+    $('#subcriberModal').modal('hide');
+    
     
     $('.user_edit_modal').modal('hide');
     $('#vlogModal').modal('hide');
@@ -156,6 +181,10 @@ window.addEventListener('successfully_added', event => {
 
 })
 
+window.addEventListener('ShowSubscriberDeleteModal', event => {
+    $('#subscriberDeleteModal').modal('show');
+     
+})
 window.addEventListener('editVlogModal', event => {
     $('#editVlogModal').modal('show');
      
@@ -177,6 +206,8 @@ window.addEventListener('open_edit_cat_modal', event => {
 })
 window.addEventListener('delete_toast', event => {
     $('#blogDeletedModal').modal('hide');
+    $('#subscriberDeleteModal').modal('hide');
+    
     $('#vlogDeletedModal').modal('hide');
     $('#standardModal').modal('hide');
     Snackbar.show({
@@ -215,14 +246,14 @@ Livewire.on('initializeCkEditor', function () {
  
  @if (session('status'))
  Snackbar.show({
-        text: 'Vlog Successfully Updated',
+        text: ' Successfully Updated',
         actionTextColor: '#fff',
         backgroundColor: '#4361ee'
     });
 @endif
 @if (session('vlogAdded'))
  Snackbar.show({
-        text: 'Vlog Successfully Added',
+        text: ' Successfully Added',
         actionTextColor: '#fff',
         backgroundColor: '#4361ee'
     });

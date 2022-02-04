@@ -9,6 +9,37 @@
 <meta name="keywords" content="academy, course, education, education html theme, elearning, learning," />
 <meta name="author" content="ThemeMascot" />
 
+
+
+
+
+<meta property="og:title" content="IBEX Vlogign and Entertainment" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://ibexvlog.com/"/>
+    <meta property="og:image" content="{{ asset('MY/LOGO/logo-wide.png') }}"/>
+    <meta property="og:site_name" content="https://ibexvlog.com/"/>
+    <meta property="og:description" content="IBEX is a platforme that Focus on Vlogign and Entertainment Our goal is to create a tech-savvy citizen! EthioTitor has experienced and educated information technology professionals."/>
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    <meta property="og:type" content="article" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Page Title -->
 <title>IbexVlog</title>
 

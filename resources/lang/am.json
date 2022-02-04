@@ -57,10 +57,10 @@
   "tech": "ቴክ ",
   "get_latest": "አዳዲስ የቴክኖሎጂይ መረጃዎች ያግኙ።",
   "we_are": "እኛ ",
-  "creative": "ፈጣሪ",
+  "creative": "አድስ ነገሩ እንፈጥራለን",
   "welcome_to": "እንኳን ደህና መጣህ",
   "we_love_to": "ማዝናናት እንወዳለን።",
-  "the_good_you_need": "አሁን የሚያስፈልጉዎትን ጥሩዎች",
+  "the_good_you_need": "አሁን የሚያስፈልጉዎትን ነገሮች",
   "oportunity": "እድሎች",
   "game_show": " የጨዋታ ትዕይንት",
   "product_review": "የምርት ግምገማ",
@@ -69,5 +69,9 @@
   "blogs": "ብሎጎች",
   "our_latest_blog": "የእኛ የቅርብ ብሎግ",
   "read_more": "ተጨማሪ ያንብቡ",
-  "related_blog": "ተዛማጅ ብሎግ"
+  "related_blog": "ተዛማጅ ብሎግ",
+  "login_to_account": "ወደ መለያዎ ይግቡ",
+  "user_name": "የተጠቃሚ ስም",
+  "password": "የይለፍ ቃል",
+  "wrong_credential": "እነዚህ ምስክርነቶች ከኛ መዝገቦች ጋር አይዛመዱም።"
 }
