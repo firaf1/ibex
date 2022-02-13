@@ -7,6 +7,7 @@ use App\Models\vlog;
 use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class vlogController extends Controller
 {
@@ -38,7 +39,7 @@ public function store(Request $request)
         $vlog->title = $request->title;
         $vlog->video = $request->video;
         $vlog->thumbnail = $request->thumblain;
-        $vlog->user_id = "2";
+        $vlog->user_id = Auth::user()->id;
         $vlog->language_id = $request->language;
         $vlog->description = $request->des;
         $vlog->categories_id = $request->category;

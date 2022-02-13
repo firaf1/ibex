@@ -58,7 +58,53 @@
 
             </div>
         </div>
+ <!-- Modal -->
+ <div class="modal  fade user_add_modal" wire:ignore.self tabindex="-1" role="dialog"
+                    aria-labelledby="addContactModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h2 class="text-center">Add Agent</h2>
+                                <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                <div class="add-contact-box">
+                                    <div class="add-contact-content">
+                                        <form id="addContactModalTitle">
+                                            <div class="row">
+                                               
+                                                <div class="col-md-12">
+                                                    <div class="contact-email">
+                                                        <i class="flaticon-mail-26"></i>
 
+                                                        <input type="text"   wire:model.defer="phone_number"
+                                                            class="form-control @error('phone_number')is-invalid  @enderror"
+                                                            placeholder="Phone Number">
+                                                        @error('phone_number') <span class="text-danger "
+                                                            >{{ $message }}</span> @enderror
+                                                        <span class="validation-text"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+   
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btn-edit" wire:click="addAgent" class="float-left btn">
+
+
+                                    <span style="width: 25px; height:25px" wire:loading wire:target="addAgent"
+                                        class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
+                                    <span wire:loading.class="display-none">Save</span>
+                                </button>
+
+                                <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i>
+                                    Discard</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
        
 
 

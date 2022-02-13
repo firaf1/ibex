@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -37,7 +38,7 @@ public function store(Request $request)
         $blogs->title = $request->title;
       
         
-        $blogs->user_id = "2";
+        $blogs->user_id = Auth::user()->id;
         $blogs->language_id = $request->language;
         $blogs->description = $request->des;
         $blogs->categories_id = $request->category;

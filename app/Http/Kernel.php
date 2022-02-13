@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'statusCheck' => \App\Http\Middleware\statusCheck::class,
         'isSuperAdmin' => \App\Http\Middleware\isSuperAdmin::class,
+        'isProfile' => \App\Http\Middleware\isProfile::class,
         'lock' => \App\Http\Middleware\lockScreen::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'isAgent' => \App\Http\Middleware\isAgent::class,

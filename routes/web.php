@@ -22,12 +22,16 @@ use App\Http\Controllers\CategoryController;
  */
 Route::middleware(['lang'])->group(function () {
     Route::middleware(['auth'])->group(function () {
+if(Auth::check()){}
+        if(Auth::user()->role == null || Auth::user()->full_name == null ||Auth::user()->email == null || Auth::user()->status == null|| Auth::user()->address == null)
+        {
+            return redirect()->route('profile');
+        }
+        else {
         Route::middleware(['statusCheck'])->group(function () {
         Route::middleware(['lock'])->group(function () {
             Route::middleware(['isAdmin'])->group(function () {
-                Route::get('admin', function () {
-                    return view('admin.index');
-                })->name('admin');
+                Route::get('admin',   [agentController::class, 'admin'])->name('admin');
 
                 Route::get('Add-Vlog', [vlogController::class, 'index'])->name('addVlog');
                 Route::get('edit-vlog/{id}', [vlogController::class, 'edit']);
@@ -50,16 +54,13 @@ Route::middleware(['lang'])->group(function () {
 
                
             });
-            Route::get('user-profile', [UserController::class, 'profile'])->name('profile');
+           
             Route::get('Contact-us', function () {
                 $blogs = Blog::where('status', '=', '1')->orderBy('created_at', 'desc')->take(4)->get();
                 return view('home.contact_us', compact(['blogs']));
             })->name('contact');
 
-            Route::get('logout', function () {
-                Auth::logout();
-                return redirect('/');
-            })->name('user-logout');
+          
         });
         Route::get('locke-screen', function () {
             $user = User::find(Auth::user()->id);
@@ -99,6 +100,13 @@ return view('blocked_account');
     Route::get('Blocked-account', function(){
         return view('blocked_account');
                 })->name('blockedAccount');
+            }
+            Route::get('logout', function () {
+                Auth::logout();
+                return redirect('/');
+            })->name('user-logout');
+            Route::get('user-profile', [UserController::class, 'profile'])->name('profile');
+        }
 });
 
     

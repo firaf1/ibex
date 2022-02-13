@@ -33,8 +33,8 @@
                                              </div>
                                          </div>
                                          <p class="mt-10"> {!! Str::limit( $blog->description , 100, ' ...')   !!}</p>
-                                         <div class="mt-10"> <a href="blog1.html"
-                                                 class="btn btn-theme-colored btn-sm">ሙሉ መረጃ</a> </div>
+                                         <div class="mt-10"> <a href="{{ route('blogDetail', $blog->id) }}"
+                                                 class="btn btn-theme-colored btn-sm">@lang('read_more')</a> </div>
                                          <div class="clearfix"></div>
                                      </div>
                                  </article>

@@ -26,6 +26,9 @@
     <link href=" {{ asset('back/assets/css/elements/miscellaneous.css')}}" rel="stylesheet" type="text/css" />
     <link href=" {{ asset('back/assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('back/assets/css/components/tabs-accordian/custom-tabs.css')}}" rel="stylesheet" type="text/css" />
+ 
+
+    <link href="back/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->

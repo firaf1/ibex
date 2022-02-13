@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
@@ -135,4 +136,47 @@ $monthRev = $this->totalRevFun(Subscriber::whereMonth('created_at', date('m'))
    {
        return view('agent.subscriber');
    }
+
+
+public function admin()
+{
+    $todayTotalUser = User::whereDate('created_at', Carbon::today())->where('role', '!=', 'Super Admin')->count();
+    $monthSubscriber = User::whereMonth('created_at', date('m'))
+    ->whereYear('created_at', date('Y'))
+    ->count();
+$totalUsers = User::all()->count();
+    $agents = User::where('role', 'Agent')->latest()->paginate(10);
+    $admins = User::where('role', 'Admin')->latest()->paginate(10);
+    $users = User::where('role', 'User')->latest()->paginate(10);
+
+    $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->get());
+    $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get());
+    $totalRev = $this->totalRevFun(Subscriber::all());
+
+
+
+    return view('admin.index', compact(['agents', 'admins', 'users','todayRev','weekRev','totalRev', 'todayTotalUser','totalUsers', 'monthSubscriber']));
+}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 }

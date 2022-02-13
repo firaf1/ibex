@@ -16,7 +16,7 @@ class UserIndex extends Component
         'fullName' => 'required',
 
         'email' => 'required|unique:users,email',
-        'phone_number' => 'required|unique:users,phone_number',
+        'phone_number' => 'required|unique:users,phone_number|min:10',
         'password' => 'sometimes|required|min:4|confirmed',
         'password_confirmation' => 'sometimes|required',
         'role' => 'required',

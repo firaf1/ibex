@@ -81,7 +81,7 @@
                                                     <div class="contact-email">
                                                         <i class="flaticon-mail-26"></i>
 
-                                                        <input type="text" id="c-email" wire:model.defer="phone_number"
+                                                        <input type="text"  wire:model.defer="phone_number"
                                                             class="form-control @error('phone_number')is-invalid  @enderror"
                                                             placeholder="Phone Number">
                                                         @error('phone_number') <span class="text-danger "
@@ -305,7 +305,7 @@
                                 <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i>
                                     Discard</button>
                                 <button type="button" class="btn btn-danger" wire:click="detedUser">
-                                    <span style="width: 25px; height:25px" wire:loading wire:target="Updated_user"
+                                <span style="width: 25px; height:25px" wire:loading wire:target="detedUser"
                                         class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
                                     <span wire:loading.class="display-none">Delete</span>
                                 </button>

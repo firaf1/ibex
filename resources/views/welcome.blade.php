@@ -37,7 +37,33 @@
 
     <!-- Skin Colors -->
     <link id="changeable-colors" rel="stylesheet" href="css/colors/blue.css" />
+<style>
+ 
+    .logo img{
+        width:100%;
+    }
+    .logo{
 
+        width:50%;
+        margin-left:25%;
+    }
+    @media(max-width: 750px) {
+        #mymodal{
+        height:60vh;
+    }
+    .box{
+        height:50vh;
+        width:98%;
+        margin-left:1%;
+        
+    }
+        .logo{
+
+width:90%;
+margin-left:5%;
+}
+  }
+</style>
     <!-- End CSS Files -->
     @livewireStyles
 </head>
