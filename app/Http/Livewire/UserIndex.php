@@ -11,7 +11,7 @@ class UserIndex extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public  $fullName, $phone_number,$search, $email, $updated_id, $deleted_id, $password, $password_confirmation, $role, $address;
+    public  $fullName, $phone_number,$search, $updated_password, $email, $updated_id, $deleted_id, $password, $password_confirmation, $role, $address;
     protected $rules = [
         'fullName' => 'required',
 
@@ -88,6 +88,9 @@ class UserIndex extends Component
         $user->address = $this->address;
         $user->role = $this->role;
         $user->email = $this->email;
+        if($this->updated_password != null){
+           $user->password = Hash::make($this->updated_password);
+        }
 
         $user->save();
         $this->dispatchBrowserEvent('successfully_added', ['newName' => "Successfully Updated"]);

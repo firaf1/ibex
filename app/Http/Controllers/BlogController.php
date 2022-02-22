@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Http\Request;
@@ -49,6 +50,19 @@ public function store(Request $request)
         $blogs->save();
         return redirect()->route('blog')->with('blogAdded', 'Vlog Successfully Added');
  
+}
+
+public function uploadProfile(Request $request)
+{
+    $this->validate($request, [
+        'file' => 'required|mimes:png,jpg,jpeg,|max:2048'
+    ]);
+    $blogs = User::findOrFail(Auth::user()->id);
+    $tempImage = 'IBEX-' . time() . '.' . $request->file->extension();
+    $request->file->storeAs('Agent_Profile/', $tempImage, 'public');
+    $blogs->photo = "storage/Agent_Profile/" . $tempImage;
+    $blogs->save();
+    return redirect()->route('profile')->with('blogAdded11111', 'Vlog Successfully Added');
 }
 
 

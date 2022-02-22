@@ -12,7 +12,7 @@ class ProfileIndex extends Component
     use WithFileUploads;
 
 
-public $full_name, $email, $phone_number, $address,  $picture, $password,$oldPasswordMessage, $confirmPasswordMessage, $password_confirmation, $newPassword;
+public $full_name, $email, $phone_number, $address,$account_number,$bank,  $picture, $password,$oldPasswordMessage, $confirmPasswordMessage, $password_confirmation, $newPassword;
 
 protected function rules()
 {
@@ -22,18 +22,25 @@ protected function rules()
     'full_name' => 'required',
     'email' => 'required|unique:users,email,'.Auth::user()->id,
     'address' => 'required',
+    'bank' => 'required',
+    'account_number' => 'required',
     'phone_number' => 'required|unique:users,phone_number,'.Auth::user()->id,
 ];
 }
     public function update()
     {
-        // dd($request->all());
+
+        if(Auth::user()->role== "Agent")
        $this->validate();
+       if($this->full_name == null || $this->phone_number == null || $this->email == null || $this->address == null){
+        return $this->dispatchBrowserEvent('delete_toast', ['newName' => "Please Fill All Your Profile Field"]);
+       }
       
          $user = User::find(Auth::user()->id);
        
          $user->full_name = $this->full_name;
-        
+        $user->bank_type = $this->bank;
+        $user->account_type = $this->account_number;
          $user->phone_number = $this->phone_number;
          $user->email = $this->email;
          $user->address = $this->address;
@@ -43,9 +50,10 @@ protected function rules()
             $user->photo = "storage/User_Profile/" . $tempImage;
          }
 if($user->save()){
-   
-     
-    return redirect('user-profile');
+    
+    $this->dispatchBrowserEvent('successfully_added', ['newName' => "Successfully Updated!!!!!!"]);
+    $this->mount();
+    // return redirect('user-profile');
 }
 
 
@@ -54,6 +62,7 @@ public function password_update(){
 
     $user = User::find(Auth::user()->id);
     if(Hash::check($this->password, $user->password)){
+        dd('ddd');
         if($this->password_confirmation == $this->newPassword){
            $user->password = Hash::make($this->newPassword);
            $user->save();
@@ -80,6 +89,9 @@ public function mount(){
     $this->email = $user->email;
     $this->phone_number = $user->phone_number;
     $this->address = $user->address;
+    $this->account_number = $user->account_type;
+    $this->bank = $user->bank_type;
+ 
 
 }
 

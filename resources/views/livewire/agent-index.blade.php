@@ -54,152 +54,166 @@
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
- <!-- Modal -->
- <div class="modal  fade user_add_modal" wire:ignore.self tabindex="-1" role="dialog"
-                    aria-labelledby="addContactModalTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <h2 class="text-center">Add Agent</h2>
-                                <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
-                                <div class="add-contact-box">
-                                    <div class="add-contact-content">
-                                        <form id="addContactModalTitle">
-                                            <div class="row">
-                                               
-                                                <div class="col-md-12">
-                                                    <div class="contact-email">
-                                                        <i class="flaticon-mail-26"></i>
+        <!-- Modal -->
+        <div class="modal  fade user_add_modal" wire:ignore.self tabindex="-1" role="dialog"
+            aria-labelledby="addContactModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h2 class="text-center">Add Agent</h2>
+                        <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                        <div class="add-contact-box">
+                            <div class="add-contact-content">
+                                <form id="addContactModalTitle">
+                                    <div class="row">
 
-                                                        <input type="text"   wire:model.defer="phone_number"
-                                                            class="form-control @error('phone_number')is-invalid  @enderror"
-                                                            placeholder="Phone Number">
-                                                        @error('phone_number') <span class="text-danger "
-                                                            >{{ $message }}</span> @enderror
-                                                        <span class="validation-text"></span>
-                                                    </div>
-                                                </div>
+                                        <div class="col-md-12">
+                                            <div class="contact-email">
+                                                <i class="flaticon-mail-26"></i>
+
+                                                <input type="text" wire:model.defer="phone_number"
+                                                    class="form-control @error('phone_number')is-invalid  @enderror"
+                                                    placeholder="Phone Number">
+                                                    @error('phone_number') <span class="text-danger " >{{ $message }}</span> @enderror
                                             </div>
-   
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+
+                                </form>
                             </div>
-                            <div class="modal-footer">
-                                <button id="btn-edit" wire:click="addAgent" class="float-left btn">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-edit" wire:click="addAgent" class="float-left btn">
 
 
-                                    <span style="width: 25px; height:25px" wire:loading wire:target="addAgent"
-                                        class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
-                                    <span wire:loading.class="display-none">Save</span>
-                                </button>
+                            <span style="width: 25px; height:25px" wire:loading wire:target="addAgent"
+                                class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
+                            <span wire:loading.class="display-none">Save</span>
+                        </button>
 
-                                <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i>
-                                    Discard</button>
+                        <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i>
+                            Discard</button>
 
-                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="tableSimple" class="col-lg-12 col-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Simple Table</h4>
                         </div>
                     </div>
                 </div>
-       
+                <div class="widget-content widget-content-area">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover  mb-4">
+                            <thead>
+                                <tr>
+                                    <th>User Info</th>
+                                    <th>Today</th>
+                                    <th>This Week</th>
+                                    <th class="text-center">This Month</th>
+                                    <th>Revenue </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $user)
+
+                                    <tr>
+                                        <td style="width:15rem;">
+                                            <div class="user-profile row">
+                                                <div class="col-sm-4">
+
+                                                    @if($user->photo != null)
+                                                        <img src="{{ asset($user->photo) }}"
+                                                            style="width: 60px; height: 60px; border-radius:10px;"
+                                                            alt="avatar">
+                                                    @else
+                                                        <div class="avatar avatar-xl " style="margin-left:0rem;">
+                                                            <span class="avatar-title">
+                                                                <?php 
+                                                    $position = strpos($user->full_name, ' ');
+                                                    if($position != 0)
+                                                    echo substr( $user->full_name, 0, 1). $user->full_name[$position+1];
+                                                    else echo substr( $user->full_name, 0, 1);
+                                                                ?>
+                                                         </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+
+                                                <div class="col-sm-8">
+                                                    <div class="user-meta-info">
+                                                        <p class="user-name" data-name="Susan">{{ $user->full_name }}
+                                                        </p>
+                                                        <span
+                                                            class="badge outline-badge-secondary">{{ $user->phone_number }}</span>
+                                                    </div>
+                                                </div>
 
 
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="user-name" data-name="Susan">
+                                                <span class="badge badge-pills badge-primary">
+                                                    {{ $user->Today($user->id) }} - subscriber</span>
+                                            </p>
 
-    <div id="tableSimple" class="col-lg-12 col-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Simple Table</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover  mb-4">
-                                            <thead>
-                                                <tr>
-                                                    <th>User Info</th>
-                                                    <th>Today</th>
-                                                    <th>This Week</th>
-                                                    <th class="text-center">This Month</th>
-                                                    <th>Revenue </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                 @foreach ($users as $user)
-                                                     
-                                                 <tr>
-                                                     <td style="width:15rem;"> 
-                                                     <div class="user-profile row">
-                                                         <div class="col-sm-4">
-                        
-                        @if ($user->photo != null)
-                        <img src="{{ asset($user->photo) }}" style="width: 60px; height: 60px; border-radius:10px;" alt="avatar">
-                        @else
-                        <div class="avatar avatar-xl " style="margin-left:0rem;">
-                            <span class="avatar-title">
-                                <?php 
-                                $position = strpos($user->full_name, ' ');
-                                if($position != 0)
-                                echo substr( $user->full_name, 0, 1). $user->full_name[$position+1];
-                                else    echo substr( $user->full_name, 0, 1);
+                                            <span
+                                                class="badge outline-badge-danger">{{ $user->todayRev($user->id) }}
+                                                - birr</span>
+                                        </td>
+                                        <td>
+                                            <p class="user-name" data-name="Susan">
+                                                <span class="badge badge-pills badge-primary">
+                                                    {{ $user->Week($user->id) }} -subscriber</span>
+                                            </p>
+                                            <span
+                                                class="badge outline-badge-danger">{{ $user->weekRev($user->id) }}-
+                                                birr</span>
+                                            </span>
 
-?>
-                            <!-- {{ $user->full_name }} -->
-                        </span>
-                        </div>
-                        @endif
-                        </div>
+                                        </td>
+                                        <td class="text-center"><span class="text-info">
+                                                <p class="user-name" data-name="Susan">
+                                                    <span class="badge badge-pills badge-primary">
+                                                        {{ $user->Month($user->id) }} -subscriber</span>
+                                                </p>
 
-                        <div class="col-sm-8"><div class="user-meta-info">
-                            <p class="user-name" data-name="Susan">{{$user->full_name}}</p>
-                            <span class="badge outline-badge-secondary">{{ $user->phone_number }}</span>
-                        </div></div>
+                                                <span
+                                                    class="badge outline-badge-danger">{{ $user->monthRev($user->id) }}-
+                                                    birr</span>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
 
+                                            <span class="badge badge-success"> {{ $user->totalSub($user->id) }}
+                                            </span>
+                                            <span class="badge badge-danger"> {{ $user->total11($user->id) }} -
+                                                birr </span>
 
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
                     </div>
-                                                     </td>
-                                                     <td>
-                                                          <p class="user-name" data-name="Susan">
-                            <span class="badge badge-pills badge-primary"> {{ $user->Today($user->id) }} - subscriber</span>
-                            </p>
-                           
-                            <span class="badge outline-badge-danger">{{ $user->todayRev($user->id) }} - birr</span>
-                                                     </td>
-                                                     <td>  <p class="user-name" data-name="Susan">
-                            <span class="badge badge-pills badge-primary"> {{ $user->Week($user->id) }} -subscriber</span>
-                            </p>
-                            <span class="badge outline-badge-danger">{{ $user->weekRev($user->id) }}- birr</span>
-                                                     </span>
-                        
-                        </td>
-                                                     <td class="text-center"><span class="text-info">
-                                                     <p class="user-name" data-name="Susan">
-                            <span class="badge badge-pills badge-primary"> {{ $user->Month($user->id) }} -subscriber</span>
-                            </p>
-                           
-                            <span class="badge outline-badge-danger">{{ $user->monthRev($user->id) }}- birr</span>
-                                                     </span>
-                                                    </td>
-                                                     <td class="text-center">
-                                                       
-                                                         <span class="badge badge-success">    {{ $user->totalSub($user->id) }}  </span>  
-                                                     <span class="badge badge-danger">  {{ $user->total11($user->id) }} - birr </span>
-                                                        
-                                                      </td>
-                                                 </tr>
-                                                 @endforeach
-                                            
-                                            </tbody>
-                                        </table>
-                                    </div>
- 
-                                    {{ $users->links() }}
-                            </div>
-                        </div>
-</div>
+
+                    {{ $users->links() }}
+                </div>
+            </div>
+        </div>

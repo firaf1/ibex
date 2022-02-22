@@ -16,7 +16,7 @@
               <h2 class="title text-white text-center">@lang('aboutUs')</h2>
               <ol class="breadcrumb text-left text-black mt-10">
                 
-                <li class="active text-gray-silver">አቲቶቲቶር</li>
+                <li class="active text-gray-silver">IBEX</li>
               </ol>
             </div>
           </div>

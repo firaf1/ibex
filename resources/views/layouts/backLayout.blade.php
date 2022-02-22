@@ -26,6 +26,7 @@
     <link href=" {{ asset('back/assets/css/elements/miscellaneous.css')}}" rel="stylesheet" type="text/css" />
     <link href=" {{ asset('back/assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('back/assets/css/components/tabs-accordian/custom-tabs.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/assets/css/elements/alert.css')}}">
  
 
     <link href="back/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
@@ -43,6 +44,12 @@
     width: 90%!important;
 
    
+    }
+    #passss{
+        display:none;
+    }
+    #dddd{
+        display:none;
     }
     .component-card_3{
         margin-top:10px;
@@ -178,6 +185,12 @@
     <script>
 
 
+
+
+
+
+
+
 window.addEventListener('successfully_added', event => {
     $('.user_add_modal').modal('hide');
     $('#subcriberModal').modal('hide');
@@ -225,7 +238,11 @@ window.addEventListener('open_cat_add_modal', event => {
 window.addEventListener('open_edit_cat_modal', event => {
     $('#cat_edit').modal('show');
 })
+
+
 window.addEventListener('delete_toast', event => {
+    
+    $('#fadeinModal').modal('hide');
     $('#blogDeletedModal').modal('hide');
     $('#subscriberDeleteModal').modal('hide');
     
@@ -236,6 +253,11 @@ window.addEventListener('delete_toast', event => {
         actionTextColor: '#fff',
         backgroundColor: '#e7515a'
     });
+})
+
+window.addEventListener('questionDeleteModal', event => {
+    $('#fadeinModal').modal('show');
+   
 })
 
 window.addEventListener('success_toast', event => {
@@ -258,7 +280,7 @@ window.addEventListener('warning_toast', event => {
 
 
 Livewire.on('initializeCkEditor', function () {
-    console.log('hello...............')
+  
     CKEDITOR.replace('editor', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
@@ -289,6 +311,15 @@ Livewire.on('initializeCkEditor', function () {
     });
 @endif
 
+
+@if (session('questionAdded'))
+ Snackbar.show({
+        text: 'Question  is Successfully Added',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
 @if (session('blogAdded'))
  Snackbar.show({
         text: 'Blog is Successfully Updated',
@@ -297,7 +328,30 @@ Livewire.on('initializeCkEditor', function () {
     });
 @endif
 
+@if (session('blogAdded1'))
+ Snackbar.show({
+        text: 'Your Account Successfully Created',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
+@if (session('blogAdded11111'))
+ Snackbar.show({
+        text: 'Your Profile Picture is Successfully Upload',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+@endif
+
     </script>
+
+@if($errors->any())
+<script>
+console.log('helooooooooooooo')
+    $('#quesm').modal('show');
+</script>
+@endif
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 </body>
 

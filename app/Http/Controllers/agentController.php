@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class agentController extends Controller
 {
@@ -162,7 +163,31 @@ $totalUsers = User::all()->count();
  
 
 
+public function frontAgent(Request $request)
+{
+    $this->validate($request, [
+        'phone_number' => 'required|unique:users,phone_number|min:10',
+        'password' => 'sometimes|required|min:4|confirmed',
+        'password_confirmation' => 'sometimes|required',
+         
+    ]);
 
+    if(!$request->agree){
+
+        Session::flash('message', 'Your must Agree to our condition!'); 
+        return back();
+    }
+    else{
+        $user = new User();
+        $user->phone_number = $request->phone_number;
+        $user->password = $request->password;
+        $user->role = "Agent";
+         if($user->save()){
+            Auth::login($user);
+            return redirect()->route('profile')->with('blogAdded1', 'Vlog Successfully Added111111');
+         }
+    }
+}
 
 
 

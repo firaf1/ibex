@@ -1,0 +1,141 @@
+.questionBox{
+    padding-top: 1rem;
+   margin-bottom: 1.5rem;
+    width:75%;
+ padding-bottom: 1rem;
+ padding-left: 1rem;
+    border-radius: 10px;
+    border:2px solid #cacaca;
+    background-color: white;
+}
+@media only screen and (max-width: 980px) {
+	.questionBox {
+        width:100%;
+	}
+    .result111{
+        width: 100%;
+        display: block;
+    }
+	 
+  }
+.radio_button{
+    width:32px;
+    height:32px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #1F386B;
+    display: flex;
+ justify-content: center;
+    align-items: center;
+}
+.red_radio_button{
+    width:32px;
+    height:32px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #ca0404;
+    display: flex;
+ justify-content: center;
+    align-items: center;
+}
+.dot{
+  
+    background-color: #373ea3;
+    width:18px;
+    height:18px;
+    border-radius: 50%;
+}
+.redDot{
+    background-color: red;
+    width:18px;
+    height:18px;
+    border-radius: 50%;
+}
+
+
+.label{
+    color: #9b9b9b;
+ font-family: 'Open Sans', sans-serif;
+ font-size: 18px;
+}
+.redLable{
+    color: #ce2828;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+.disable{
+    cursor: not-allowed;;
+}
+.questionBox .numbers{
+    
+    background-color: #d7d7d7;
+    color: #1f32b5;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+       align-items: center;
+   
+    border-radius: 50%;
+}
+ 
+ 
+ p {
+    font-size: large;
+    margin-left: 3rem;
+   
+    color: #1F386B ;
+    font-family: sans-serif;
+}
+.leftChoice{
+    margin-left: 2rem;
+}
+.rigthChoice{
+    margin-right: 2rem;
+}
+ input{
+    width: 25px;
+    height: 25px;
+}
+.choiceContainer{
+    display: inline-flex;
+    margin-bottom: 1rem;
+   
+}
+.ChoiceCheck{
+    margin-left: 0.5rem;
+    margin-top: 0.34rem;
+}
+.result111{
+    width: 70%;
+margin: 0px;
+    display: flex;
+   justify-content: space-between;
+}
+.result111 h2{
+    font-size: 2rem;
+}
+
+.loading{
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    border: 8px solid #1f32b5;
+    margin-left: 40%;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: infinite linear 0.5s myAnim;
+}
+@keyframes myAnim {
+  
+ 
+        to { -webkit-transform: rotate(360deg); }
+ 
+}
+.pleaseWait{
+    margin-left: 35%;
+}
+.display-none{
+    display: none;
+}
+ 

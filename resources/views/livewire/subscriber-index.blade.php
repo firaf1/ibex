@@ -1,7 +1,8 @@
 <div>
 <div class="col-lg-12">
             <div class="statbox widget box box-shadow ">
-                <div class="row">
+               @if (true)
+               <div class="row">
                     <div
                         class="col-xl-4 col-lg-5 col-md-5 col-sm-7 filtered-list-search layout-spacing align-self-center">
                         <form class="form-inline ">
@@ -88,6 +89,11 @@
                 {{ $phoneNumbers1->links() }}
 </div>
                 </div>
+
+                @else
+                <img style=" width:20rem; margin-left:10rem " src="{{ asset('working.png')}}">
+                <h2 style="text-align:center" > Coming Soon!!!</h2>
+               @endif
                 
                 
             </div>

@@ -73,5 +73,7 @@
   "login_to_account": "ወደ መለያዎ ይግቡ",
   "user_name": "የተጠቃሚ ስም",
   "password": "የይለፍ ቃል",
-  "wrong_credential": "እነዚህ ምስክርነቶች ከኛ መዝገቦች ጋር አይዛመዱም።"
+  "wrong_credential": "እነዚህ ምስክርነቶች ከኛ መዝገቦች ጋር አይዛመዱም።",
+  "complete_account": "ማንኛውንም እርምጃ ከመውሰድዎ በፊት መለያዎን ማጠናቀቅ አለብዎት",
+  "warning": "ማስጠንቀቂያ"
 }

@@ -41,7 +41,11 @@
 }
 
 
-
+ 
+ .question-image img{
+   height: 50rem;
+   width: 5rem;
+ }
 
 .lock-name{
     color: #201491;
@@ -78,6 +82,7 @@
   border-top-color: #fff;
   animation: spin 1s linear infinite;
   -webkit-animation: spin 0.6s linear infinite;
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fethiopianmonitor.com%2F2020%2F09%2F15%2Faddis-ababa-city-deputy-mayor-appoints-officials%2F&psig=AOvVaw1phStHUlskXzIV7QBolUlM&ust=1644947310762000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMC1zLng__UCFQAAAAAdAAAAABAq);
 }
 
 @keyframes spin {

@@ -55,6 +55,7 @@
 <link href="{{ asset('front/home/css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('front/home/css/animate.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('front/home/css/css-plugin-collections.css')}}" rel="stylesheet"/>
+<link href="{{ asset('front/css/game.css')}}" rel="stylesheet"/>
 <!-- CSS | menuzord megamenu skins -->
 <link id="menuzord-menu-skins" href="{{ asset('front/home/css/menuzord-skins/menuzord-rounded-boxed.css')}}" rel="stylesheet"/>
 <!-- CSS | Main style file -->
@@ -175,7 +176,7 @@
                 
               <li>
               @if (Auth::user()->photo != null)
-              <a href="contact.html" style="width: 60px; height: 60px; border-radius:50%;border:4px solid #1F386B;  margin-top:-1rem;  overflow:hidden; padding:0px;" >
+              <a href="{{ route('profile') }}" style="width: 60px; height: 60px; border-radius:50%;border:4px solid #1F386B;  margin-top:-1rem;  overflow:hidden; padding:0px;" >
               
               <img src="{{ asset(Auth::user()->photo) }}" style="width:100%; height:100%;" alt="" srcset="">
               </a>
@@ -253,7 +254,7 @@
                 <article class="post media-post clearfix pb-0 mb-10">
                   <a href="#" class="post-thumb"><img style=" width:25%;" alt="" src="{{ asset($blog->image)}}"></a>
                   <div class="post-right">
-                    <h5 class="post-title mt-0 mb-5"><a href="blog2.html">{{$blog->title}}</a></h5>
+                    <h5 class="post-title mt-0 mb-5"><a href="{{ route('blogDetail', $blog->id) }}">{{$blog->title}}</a></h5>
                     <!-- <p class="post-date mb-0 font-12">ጃክ ማ በ 1990 ዎቹ መጀመሪያ ወደ አሜሪካ ሲሄድ በይነመረቡ ተረዳ ፡፡ ከአሜሪካ በተለየ መልኩ ቻይና አሁንም የበየነመረብን አብዮት አልተከተለችም ፡፡</p> -->
                   </div>
                 </article>
@@ -265,13 +266,13 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <h5 class="widget-title line-bottom">ኢትዮቲቶር</h5>
+            <h5 class="widget-title line-bottom">IBEX vlog</h5>
             <ul class="list angle-double-right list-border">
               <li><a href="#">መረጃዎች</a></li>
               <li><a href="#">አባል ይሁኑ</a></li>
               <li><a href="#">ደንብና ግዴታዎች</a></li>
-              <li><a href="#">ስለ እኛ</a></li>
-              <li><a href="#">አግኙን</a></li>
+              <li><a href="#">@lang('aboutUs')</a></li>
+              <li><a href="#">@lang('contact_us')</a></li>
             </ul>
           </div>
         </div>
@@ -333,7 +334,8 @@
 @livewireScripts
 
 <script>
-  
+ 
+
 
 
 window.addEventListener('successfully_added', event => {
@@ -370,5 +372,42 @@ window.addEventListener('successfully_added', event => {
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60660475f9ebea0f"></script>
 
+
+<script>
+     
+  window.addEventListener('Add_dot_Class', event => {
+  var x = document.getElementById(event.detail.correctId);
+  var correctLabelId = "label" + event.detail.correctId
+    document.getElementById(correctLabelId).style.color="blue";
+  x.className = "dot";
+  console.log(x);
+
+  var y = document.getElementById(event.detail.wrongId);
+  y.className = "redDot";
+  var id = "radio_button"+ event.detail.wrongId;
+  var z = document.getElementById(id);
+   z.className = "red_radio_button";
+
+   var label_id = "label"+ event.detail.wrongId;
+   var label = document.getElementById(label_id).style.color="red";
+   document.getElementById('realButton').style.display="block"
+   document.getElementById('fakeButton').style.display="none"
+  //  label.style.color="redx"
+})
+
+window.addEventListener('correct_answer', event => {
+  var x = document.getElementById(event.detail.correctId);
+  x.className = "dot";
+  var label_id = "label"+ event.detail.correctId;
+   var label = document.getElementById(label_id).style.color="#373ea3";
+   document.getElementById('realButton').style.display="block"
+   document.getElementById('fakeButton').style.display="none"
+})
+window.addEventListener('notAllowed', event => {
+window.alert('You Cannot Change Your Answer');
+})
+
+
+</script>
 </body>
 </html>

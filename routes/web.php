@@ -4,6 +4,7 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\vlogController;
@@ -22,12 +23,7 @@ use App\Http\Controllers\CategoryController;
  */
 Route::middleware(['lang'])->group(function () {
     Route::middleware(['auth'])->group(function () {
-if(Auth::check()){}
-        if(Auth::user()->role == null || Auth::user()->full_name == null ||Auth::user()->email == null || Auth::user()->status == null|| Auth::user()->address == null)
-        {
-            return redirect()->route('profile');
-        }
-        else {
+        Route::middleware(['isProfile'])->group(function () {
         Route::middleware(['statusCheck'])->group(function () {
         Route::middleware(['lock'])->group(function () {
             Route::middleware(['isAdmin'])->group(function () {
@@ -100,13 +96,25 @@ return view('blocked_account');
     Route::get('Blocked-account', function(){
         return view('blocked_account');
                 })->name('blockedAccount');
-            }
+            });
+            Route::post('upload-profile', [BlogController::class, 'uploadProfile'])->name('agentProfile');
+
+
             Route::get('logout', function () {
                 Auth::logout();
                 return redirect('/');
             })->name('user-logout');
             Route::get('user-profile', [UserController::class, 'profile'])->name('profile');
-        }
+
+            Route::get('ibex-game', [GameController::class, 'index'] )->name('gameIndex');
+            Route::get('edit-game/{id}', [GameController::class, 'edit'])->name('editGame');
+            Route::post('update-game/{id}', [GameController::class, 'update'])->name('updateGame');
+
+
+            Route::get('question', function(){
+                return view('admin.question');
+            })->name('question');
+            Route::post('store-question', [GameController::class, 'storeGame'])->name('storeGame');
 });
 
     
@@ -131,8 +139,13 @@ return view('blocked_account');
     
         return view('welcome', compact('sessionLang'));
     })->name('home');
+
+
+    Route::get('agent-register', function(){
+        return view('agent_reg');
+    });
+
+    Route::post('add-agent', [agentController::class, 'frontAgent'])->name('addfrontAgent');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+ 

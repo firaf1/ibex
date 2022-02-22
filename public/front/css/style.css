@@ -560,7 +560,7 @@ overflow: hidden;
 /* Home Section Animated Version */
 
 	.home-animated{
-		background-image:url(../images/animate.jpg);
+		background-image:  url(../images/animate.jpg);
 		background-size: cover;
 		background-position: 50% 50%;
 		background-attachment: fixed !important;

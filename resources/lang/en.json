@@ -73,5 +73,7 @@
   "login_to_account": " ",
   "user_name": "user name ",
   "password": "password",
-  "wrong_credential": "These credentials do not match our records."
+  "wrong_credential": "These credentials do not match our records.",
+  "complete_account": "You must have to complete your account before taking any action",
+  "warning": "Warning"
 }

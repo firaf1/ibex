@@ -96,8 +96,8 @@
 
                                                     <div class="contact-occupation">
                                                         <i class="flaticon-fill-area"></i>
-                                                        <input type="password" id="c-occupation"
-                                                            wire:model.debounce="password"
+                                                        <input type="password"  
+                                                            wire:model.defer="password"
                                                             class="form-control @error('password')is-invalid  @enderror"
                                                             placeholder="Password">
                                                         @error('password') <span class="text-danger "
@@ -109,7 +109,7 @@
                                                     <div class="contact-phone">
                                                         <i class="flaticon-telephone"></i>
 
-                                                        <input type="password" id="c-phone"
+                                                        <input type="password"  
                                                             wire:model.defer="password_confirmation"
                                                             class="form-control @error('password_confirmation')is-invalid  @enderror"
                                                             placeholder="Confirm Password">
@@ -217,7 +217,18 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
 
+<div class="contact-occupation">
+    <i class="flaticon-fill-area"></i>
+    <input type="password"  
+        wire:model.defer="updated_password"
+        class="form-control @error('updated_password')is-invalid  @enderror"
+        placeholder="New Password">
+    @error('updated_password') <span class="text-danger "
+        style="margin-left:-5rem">{{ $message }}</span> @enderror
+</div>
+</div>
 
 
                                             <div class="row">
