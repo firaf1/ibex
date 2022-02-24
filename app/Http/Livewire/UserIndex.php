@@ -3,12 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Livewire\WithPagination;
 class UserIndex extends Component
 {
-    public $users, $fullName, $phone_number, $email, $updated_id, $deleted_id, $password, $password_confirmation, $role, $address;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    public  $fullName, $phone_number,$search, $email, $updated_id, $deleted_id, $password, $password_confirmation, $role, $address;
     protected $rules = [
         'fullName' => 'required',
 
@@ -16,7 +19,7 @@ class UserIndex extends Component
         'phone_number' => 'required|unique:users,phone_number',
         'password' => 'sometimes|required|min:4|confirmed',
         'password_confirmation' => 'sometimes|required',
-        'role' => '',
+        'role' => 'required',
         'address' => 'required',
 
     ];
@@ -89,10 +92,13 @@ class UserIndex extends Component
         $user->save();
         $this->dispatchBrowserEvent('successfully_added', ['newName' => "Successfully Updated"]);
         $this->reset();
-        $this->mount();
+        $this->render();
 
     }
-
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
     public function deleted_id($id)
     {
         $this->deleted_id = $id;
@@ -103,16 +109,12 @@ class UserIndex extends Component
         $user = User::find($this->deleted_id);
         $user->delete();
         $this->dispatchBrowserEvent('delete_toast', ['newName' => "User is Successfully Deleted"]);
-        $this->mount();
+        $this->render();
 
     }
-    public function mount()
-    {
-        $this->users = User::latest()->get();
-
-    }
+    
     public function render()
     {
-        return view('livewire.user-index');
+        return view('livewire.user-index' ,['users' => User::latest()->where('full_name', 'like', '%'.$this->search.'%')->orWhere('phone_number', 'like', '%'.$this->search.'%')->orWhere('role', 'like', '%'.$this->search.'%')->paginate(10)]);
     }
 }

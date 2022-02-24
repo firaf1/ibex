@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use DateTime;
+use Carbon\Carbon;
 use App\Models\Category;
+use App\Models\Subscriber;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -43,6 +46,155 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+    public function todayRev($id){
+        $rows = Subscriber::latest()->whereDate('created_at', Carbon::today())->where('user_id', $id)->get();
+        $totalRev = 0;
+        $tdate = now();
+      
+        foreach($rows as $row){
+
+            $fdate = $row->created_at;
+
+            $datetime1 = new DateTime($fdate);
+            $datetime2 = new DateTime($tdate);
+            $interval = $datetime1->diff($datetime2);
+            $days = $interval->format('%a');
+           if($days == 0){
+$days = 1;
+               $totalRev = $totalRev + ($days*(2/30));
+           }else{
+            //    $totalRev = $totalRev + ($days*(2/30));
+           }
+             
+        }
+       //  dd($totalRev);
+        return round($totalRev, 3);
+
+
+   }
+   public function weekRev($id){
+       
+    $rows = Subscriber::select("*")->where('user_id', $id)->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+    $totalRev = 0;
+    $tdate = now();
+  
+    foreach($rows as $row){
+
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+       if($days == 0){
+$days = 1;
+           $totalRev = $totalRev + ($days*(2/30));
+       }else{
+           $totalRev = $totalRev + ($days*(2/30));
+       }
+         
+    }
+   //  dd($totalRev);
+    return round($totalRev, 3);
+
+
+}
+public function monthRev($id){
+       
+    $rows = Subscriber::select("*")->where('user_id', $id)->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+    $totalRev = 0;
+    $tdate = now();
+  
+    foreach($rows as $row){
+
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+       if($days == 0){
+$days = 1;
+           $totalRev = $totalRev + ($days*(2/30));
+       }else{
+           $totalRev = $totalRev + ($days*(2/30));
+       }
+         
+    }
+   //  dd($totalRev);
+    return round($totalRev, 3);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+public function Today($id)
+{
+    $todaySub = Subscriber::whereDate('created_at', Carbon::today())->where('user_id', $id)->count();
+   return $todaySub;
+}
+public function Week($id)
+{
+    $weekSubscriber = Subscriber::select("*")->where('user_id', $id)->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+    return $weekSubscriber;
+}
+public function Month($id)
+{
+    $monthSubscriber = Subscriber::whereMonth('created_at', date('m'))
+    ->whereYear('created_at', date('Y'))->where('user_id', $id)
+    ->count();
+    return $monthSubscriber;
+}
+public function total11($id)
+{
+    $totalRev = 0;
+    $tdate = now();
+    $rows = Subscriber::where('user_id', $id)->where('is_paid', 0)->get();
+    foreach($rows as $row){
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        
+        if($days > 0){
+                       $totalRev = $totalRev + ($days*(2/30));
+                   }
+        
+    }
+    return $totalRev;
+}
+public function totalSub($id)
+{
+    $totalRev = 0;
+    $tdate = now();
+    $rows = Subscriber::where('user_id', $id)->where('is_paid', 0)->get();
+    foreach($rows as $row){
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        
+        if($days > 0){
+                       $totalRev++;
+                   }
+        
+    }
+    return $totalRev;
+}
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -61,4 +213,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
 }

@@ -35,7 +35,25 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @livewireStyles
     <style>
-        
+        @media(max-width: 600px) {
+    .card {
+    width: 90%!important;
+
+   
+    }
+    .component-card_3{
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .searchable-container .searchable-items.grid .items {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+    }
+  }
+  .card{
+      width:23%;
+  }
         .blockui-growl-message {
             display: none;
             text-align: left;

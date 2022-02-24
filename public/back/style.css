@@ -86,3 +86,13 @@
 @-webkit-keyframes spin {
   to { -webkit-transform: rotate(360deg); }
 }
+@media(max-width: 1199px) {
+    .card {
+     border:2px solid red;
+    }
+    .searchable-container .searchable-items.grid .items {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+    }
+  }

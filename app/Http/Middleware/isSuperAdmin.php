@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isAgent
+class isSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,10 @@ class isAgent
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role == "Agent")
-        {
-
-            return $next($request);
+        if(Auth::user()->role != "Super Admin"){
+            
+            return abort(401);
         }
-        else 
-        return abort(403);
+        return $next($request);
     }
 }

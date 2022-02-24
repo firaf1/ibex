@@ -22,6 +22,7 @@ use App\Http\Controllers\CategoryController;
  */
 Route::middleware(['lang'])->group(function () {
     Route::middleware(['auth'])->group(function () {
+        Route::middleware(['statusCheck'])->group(function () {
         Route::middleware(['lock'])->group(function () {
             Route::middleware(['isAdmin'])->group(function () {
                 Route::get('admin', function () {
@@ -41,7 +42,7 @@ Route::middleware(['lang'])->group(function () {
 
                 Route::post('update-vlog/{id}', [vlogController::class, 'update'])->name('update-name');
                 Route::post('store-vlog', [vlogController::class, 'store'])->name('store-vlog');
-                Route::get('user', [UserController::class, 'index']);
+                Route::get('user', [UserController::class, 'index'])->middleware('isSuperAdmin');
                 Route::get('category', [CategoryController::class, 'index']);
                 Route::get('vlog', [UserController::class, 'vlog'])->name('vlog');
 
@@ -78,12 +79,27 @@ Route::middleware(['lang'])->group(function () {
 
 
         // Angent
-        
+        Route::middleware(['isAgent'])->group(function () {
+        Route::get('agent',[agentController::class, 'index'] )->name('agetIndex');
+        Route::get('Subscriber', [agentController::class, 'subscriber'] )->name('subscriber');
+        Route::get('Agent-Contact', [agentController::class, 'Contact'] )->name('agetContact');
+        Route::post('Agent-Contact-store', [agentController::class, 'AddAgentMessage'] )->name('addAgentMessage');
+                // Subsctibtion
+      
     });
-    Route::get('agent',[agentController::class, 'index'] )->name('agetIndex');
-    Route::get('Subscriber', [agentController::class, 'subscriber'] )->name('subscriber');
-    Route::get('Agent-Contact', [agentController::class, 'Contact'] )->name('agetContact');
-    Route::post('Agent-Contact-store', [agentController::class, 'AddAgentMessage'] )->name('addAgentMessage');
+    Route::get('Agets-user', function(){
+        return view('admin.subscribtion');
+    })->name('adminSub')->middleware('isSuperAdmin');
+
+        //Block
+        Route::get('Blocked-account', function(){
+return view('blocked_account');
+        })->name('blockedAccount');
+    });
+    Route::get('Blocked-account', function(){
+        return view('blocked_account');
+                })->name('blockedAccount');
+});
 
     
 

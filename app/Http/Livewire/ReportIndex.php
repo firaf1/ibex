@@ -49,10 +49,10 @@ public function month11()
         return view('livewire.report-index', ['phoneNumbers1' => Subscriber::latest()->whereDate('created_at', Carbon::today())->where('user_id', Auth::user()->id)->paginate(10)]);
     }
         elseif($this->week) {
-             return view('livewire.report-index', ['phoneNumbers1' => Subscriber::latest()->select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->where('user_id', Auth::user()->id)->paginate(10)]);
+             return view('livewire.report-index', ['phoneNumbers1' => Subscriber::select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->where('user_id', Auth::user()->id)->paginate(10)]);
             }
             elseif($this->month){
-                return view('livewire.report-index', ['phoneNumbers1' => Subscriber::latest()->whereMonth('created_at', date('m'))->where('user_id', Auth::user()->id)
+                return view('livewire.report-index', ['phoneNumbers1' => Subscriber::whereMonth('created_at', date('m'))->where('user_id', Auth::user()->id)
                 ->whereYear('created_at', date('Y'))
                 ->paginate(10)]);
                         }
