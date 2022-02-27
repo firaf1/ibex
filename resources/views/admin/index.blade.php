@@ -6,6 +6,8 @@
             <div class="layout-px-spacing">
 
                 <div class="row layout-top-spacing">
+@if (Auth::user()->role == "Super Admin")
+    
 
                 <div class="card component-card_30   " style="height:12rem; width:30%;  ">
                                         <div class="card-body">
@@ -55,14 +57,14 @@
                             </div>
                         </div>
                     </div>
-
+                    @endif
                                     <hr>
 <br><br><br><br><br><br><br><br><br><br><br><br> 
 
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-table-one">
                             <div class="widget-heading">
-                                <h5 class="">Agents </h5>
+                                <h5 class="">Agents  </h5> <span class="badge badge-danger"> {{ $totaAgent }}</span>
                                 
                             </div>
 
@@ -97,7 +99,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-table-one">
                             <div class="widget-heading">
-                                <h5 class="">Admins </h5>
+                                <h5 class="">Admins  </h5> <span class="badge badge-danger"> {{ $totalAdmin }}</span>
                                 
                             </div>
 
@@ -130,7 +132,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-table-one">
                             <div class="widget-heading">
-                                <h5 class="">Users </h5>
+                                <h5 class="">Users  </h5> <span class="badge badge-danger"> {{ $totalUser }}</span>
                                 
                             </div>
 

@@ -193,7 +193,7 @@
       </div>
     </section> -->
 
-             <!-- Start of LiveChat (www.livechatinc.com) code -->
+             <!-- Start of LiveChat (www.livechatinc.com) code
              <script>
              window.__lc = window.__lc || {};
              window.__lc.license = 12225951;;
@@ -234,7 +234,7 @@
                  powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow"
                      target="_blank">LiveChat</a></noscript>
              <!-- End of LiveChat code -->
-
+ -->
 
 
 

@@ -9,11 +9,12 @@ use App\Models\Category;
 
 class CategoryIndex extends Component
 {
-    public $categorys, $categoryTitle, $deletedId, $updatedId;
+    public $categorys, $categoryTitle, $category_type, $deletedId, $updatedId;
 
     protected $rules = [
 
         'categoryTitle' => 'required|unique:categories,title',
+        'category_type' => 'required',
 
     ];
     public function addCategory()
@@ -21,6 +22,7 @@ class CategoryIndex extends Component
         $this->validate();
         $category = new Category();
         $category->title = $this->categoryTitle;
+        $category->category_type = $this->category_type;
         $category->save();
         $this->dispatchBrowserEvent('success_toast', ['newName' => "Category is Successfully Added"]);
         $this->mount();
@@ -31,6 +33,7 @@ class CategoryIndex extends Component
         $this->updatedId = $id;
         $cat = Category::find($id);
         $this->categoryTitle = $cat->title;
+        $this->category_type = $cat->category_type;
         $this->dispatchBrowserEvent('open_edit_cat_modal', ['newName' => "Category is Successfully Updated"]);
     }
     public function update_cat()
@@ -38,6 +41,7 @@ class CategoryIndex extends Component
 
         $cat = Category::find($this->updatedId);
         $cat->title = $this->categoryTitle;
+        $cat->category_type = $this->category_type;
         $cat->save();
         $this->dispatchBrowserEvent('success_toast', ['newName' => "Category is Successfully Updated"]);
         $this->mount();

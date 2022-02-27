@@ -75,5 +75,15 @@
   "password": "የይለፍ ቃል",
   "wrong_credential": "እነዚህ ምስክርነቶች ከኛ መዝገቦች ጋር አይዛመዱም።",
   "complete_account": "ማንኛውንም እርምጃ ከመውሰድዎ በፊት መለያዎን ማጠናቀቅ አለብዎት",
-  "warning": "ማስጠንቀቂያ"
+  "warning": "ማስጠንቀቂያ",
+  "game_rule": "ከ90% በላይ መልስ ሲሰጡ ይሸለማሉ",
+  "attention": "ትኩረት!!!",
+  "ok": "እሺ",
+  "you_cannot_change": "መልስህን መቀየር አትችልም።",
+  "please_select_your_choice": "እባክዎ ምርጫዎን ይምረጡ",
+  "congratulation": "እንኳን ደስ አለዎ",
+  "you_will_receive_your_reward": "በቅርቡ በስልክዎ ሽልማት ያገኛሉ",
+  "completed": "ተጠናቋል",
+  "you_are_completed_your_question": "ጥያቄህን ጨርሰሃል",
+  "opportunities": "እድሎች"
 }

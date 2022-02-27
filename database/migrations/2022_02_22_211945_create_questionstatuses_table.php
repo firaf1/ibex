@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIsPaid extends Migration
+class CreateQuestionstatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddIsPaid extends Migration
      */
     public function up()
     {
-        Schema::table('subscribers', function (Blueprint $table) {
-            $table->integer('is_paid')->default(0);
+        Schema::create('questionstatuses', function (Blueprint $table) {
+            $table->id();
+            $table->string('status')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddIsPaid extends Migration
      */
     public function down()
     {
-        Schema::table('subscribers', function (Blueprint $table) {
-         
-        });
+        Schema::dropIfExists('questionstatuses');
     }
 }

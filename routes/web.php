@@ -1,5 +1,6 @@
 <?php
 
+ 
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,23 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+    dd('hell');
+    });
+ 
+    
+    
+Route::get('/clear-cache',function(){
+    Artisan::call('cache:clear');
+    \Artisan::call('view:cache');
+    \Artisan::call('view:clear');
+
+ 
+    return back();
+});
+
 Route::middleware(['lang'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::middleware(['isProfile'])->group(function () {
@@ -87,6 +105,9 @@ Route::middleware(['lang'])->group(function () {
     Route::get('Agets-user', function(){
         return view('admin.subscribtion');
     })->name('adminSub')->middleware('isSuperAdmin');
+    Route::get('reward', function(){
+        return view('admin.reward');
+    })->name('reward')->middleware('isSuperAdmin');
 
         //Block
         Route::get('Blocked-account', function(){

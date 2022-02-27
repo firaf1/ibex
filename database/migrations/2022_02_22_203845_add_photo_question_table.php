@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIsPaid extends Migration
+class AddPhotoQuestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddIsPaid extends Migration
      */
     public function up()
     {
-        Schema::table('subscribers', function (Blueprint $table) {
-            $table->integer('is_paid')->default(0);
+        Schema::table('questions', function (Blueprint $table) {
+           $table->string('photo')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddIsPaid extends Migration
      */
     public function down()
     {
-        Schema::table('subscribers', function (Blueprint $table) {
-         
+        Schema::table('questions', function (Blueprint $table) {
+            //
         });
     }
 }

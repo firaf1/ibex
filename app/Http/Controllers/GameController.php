@@ -37,6 +37,15 @@ class GameController extends Controller
         $question = new Question();
         $question->question = $request->question;
         $question->status = "Approved"; 
+
+        if($request->photo != null){
+            $tempImage = 'ibex-blogs-' . time() . '.' .  $request->photo->extension();
+            $request->photo->storeAs('Game_Image/', $tempImage, 'public');
+            $question->photo = "storage/Game_Image/" . $tempImage;
+         }
+
+
+
         if($question->save()){
              for($i= 0; $i<4; $i++){
      $choice = new Choice();
@@ -73,6 +82,9 @@ if($request->answers == 2){
         }
     
     }
+
+
+
     public function edit($id)
     {
         $first; $second; $third; $fourth; $i=0;
@@ -102,6 +114,14 @@ public function update(Request $request, $id)
      $question = Question::where('id', $id)->first();
      $i=0;
      $question->question = $request->question;
+
+     if($request->photo != null){
+        $tempImage = 'ibex-blogs-' . time() . '.' .  $request->photo->extension();
+        $request->photo->storeAs('Game_Image/', $tempImage, 'public');
+        $question->photo = "storage/Game_Image/" . $tempImage;
+     }
+
+
      if($question->save()){
          $choices = Choice::where('question_id', $question->id)->get();
          foreach($choices as $choice){
@@ -133,7 +153,7 @@ $i++;
 
 
          }
-         return redirect()->back()->with('questionAdded', 'Blogs  updated!');
+         return redirect()->route('question')->with('questionAdded', 'Blogs  updated!');
      }
 }
 

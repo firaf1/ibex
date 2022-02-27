@@ -6,9 +6,7 @@
                  
                 <div class="row    layout-top-spacing"  >
                     <div class="col-lg-12">
-                
-                     @livewire('agent-index')
-                    
+                       @livewire('reward-index')
                     </div>
                 </div>
             </div>

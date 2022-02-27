@@ -5,7 +5,7 @@
 <!-- Meta Tags -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<meta name="description" content="LearnPress | Education & Courses HTML Template" />
+<meta name="description" content="IBEX Vlogign and Entertainment" />
 <meta name="keywords" content="academy, course, education, education html theme, elearning, learning," />
 <meta name="author" content="ThemeMascot" />
 
@@ -42,6 +42,10 @@
 
 <!-- Page Title -->
 <title>IbexVlog</title>
+
+
+
+ 
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('front/home/images/favicon.png')}}" rel="shortcut icon" type="image/png">
@@ -88,6 +92,7 @@
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,7 +110,7 @@
 
 
 </head>
-<body class="boxed-layout bg-img-fixed bg-img-cover " data-bg-img="http://placehold.it/1920x1280">
+<body class="boxed-layout bg-img-fixed bg-img-cover "  >
 <div id="wrapper" class="clearfix">
  
   
@@ -129,8 +134,9 @@
                 
                <li><a href="{{ route('lang', 'en') }}"><font color="red">English</font></a>
                <a href="{{ route('lang', 'am') }}"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;አማርኛ</font></a>
+               <a  href="{{ route('gameIndex') }}"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;Games</font></a>
                <a href="{{ route('user-logout') }}"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;Logout</font></a></li>
-
+ 
                
               </li>
               </ul>
@@ -170,6 +176,25 @@
                  
                 </ul>
               </li> 
+
+                
+              <li><a href="#home"> @lang('opportunities')</a>
+                <ul class="dropdown">
+                  @foreach ($opts as $opportunitie)
+                  <li><a href="{{ route('catagoryVlogList', $opportunitie->title) }}">{{ $opportunitie->title }}</a></li>
+                  <li><a href="{{ route('gameIndex') }}">Ibex Game</a></li>
+                  @endforeach
+                
+                  <!-- <li><a href="course1.html">አይቤክስ opportunities </a></li>
+                  <li><a href="course2.html">አይቤክስ Game Show </a></li>
+                  <li><a href="course3.html">አይቤክስ Entertainment </a></li>
+                  <li><a href="course4.html">አይቤክስ Product Review </a></li> -->
+                  
+                 
+                </ul>
+              </li> 
+
+              
               <li><a href="{{ route('blogsList') }}"> @lang('blogs')</a></li>
               <li><a href="{{ route('contact') }}">@lang('contact_us')</a></li>
               @if (Auth::check())
@@ -255,8 +280,7 @@
                   <a href="#" class="post-thumb"><img style=" width:25%;" alt="" src="{{ asset($blog->image)}}"></a>
                   <div class="post-right">
                     <h5 class="post-title mt-0 mb-5"><a href="{{ route('blogDetail', $blog->id) }}">{{$blog->title}}</a></h5>
-                    <!-- <p class="post-date mb-0 font-12">ጃክ ማ በ 1990 ዎቹ መጀመሪያ ወደ አሜሪካ ሲሄድ በይነመረቡ ተረዳ ፡፡ ከአሜሪካ በተለየ መልኩ ቻይና አሁንም የበየነመረብን አብዮት አልተከተለችም ፡፡</p> -->
-                  </div>
+                   </div>
                 </article>
                 @endif
                @endforeach 
@@ -280,9 +304,9 @@
           <div class="widget dark">
             <h5 class="widget-title line-bottom">@lang('contact_us')</h5>
             <ul class="list-border">
-              <li><a href="#">+251901116038</a></li>
-              <li><a href="#">info@ethiotutor.net</a></li>
-              <li><a href="#" class="lineheight-20">መክሲኮ ፥ ኬኬር ህንፃ ሶስተኛ ፍሎር, አዲስ አባባ, ኢትዮጲያ</a></li>
+              <li><a href="#">+251910804901</a></li>
+              <li><a href="#">primecom@ibexvlog.com</a></li>
+              <li><a href="#" class="lineheight-20">bole 22 awraris around hotel</a></li>
             </ul>
             <p class="font-16 text-white mb-5 mt-15">Subscribe</p>
             <form action="course1.html">
@@ -295,23 +319,7 @@
               </div>
             </form>
             
-            <!-- Mailchimp Subscription Form Validation-->
-            <script type="text/javascript">
-             
-
-              function mailChimpCallBack(resp) {
-                  // Hide any previous response text
-                  var $mailchimpform = $('#footer-mailchimp-subscription-form'),
-                      $response = '';
-                  $mailchimpform.children(".alert").remove();
-                  if (resp.result === 'success') {
-                      $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                  } else if (resp.result === 'error') {
-                      $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                  }
-                  $mailchimpform.prepend($response);
-              }
-            </script>
+        
           </div>
         </div>
       </div>
@@ -320,7 +328,7 @@
       <div class="container pt-20 pb-20">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-11 text-black-777 m-0">Copyright &copy;2020 Ethiotutor. All Rights Reserved</p>
+            <p class="font-11 text-black-777 m-0">Copyright &copy;2020 IbextVlog. All Rights Reserved</p>
           </div>
          
         </div>
@@ -366,6 +374,10 @@ window.addEventListener('successfully_added', event => {
 <script type="text/javascript" src="{{ asset('front/home/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js')}}"></script> 
 <script type="text/javascript" src="{{ asset('front/home/js/revolution-slider/js/extensions/revolution.extension.video.min.js')}}"></script>
 
+
+
+
+
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="e///s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60660475f9ebea0f"></script>
 
@@ -404,8 +416,55 @@ window.addEventListener('correct_answer', event => {
    document.getElementById('fakeButton').style.display="none"
 })
 window.addEventListener('notAllowed', event => {
-window.alert('You Cannot Change Your Answer');
+// window.alert('You Cannot Change Your Answer');
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: "@lang('you_cannot_change')",
+  
 })
+})
+
+window.addEventListener('awarded', event => {
+ 
+
+ Swal.fire({
+  icon: 'success',
+  title: "@lang('congratulation')",
+  text: "@lang('you_will_receive_your_reward')",
+  
+})
+
+
+
+})
+
+
+window.addEventListener('completed', event => {
+ 
+
+  Swal.fire({
+  icon: 'info',
+  title: "@lang('completed')",
+  text: "@lang('you_are_completed_your_question')",
+ })
+ var x = document.getElementById('time22').style.display="none";
+ 
+
+})
+
+
+window.addEventListener('Already', event => {
+  Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Sorry You Can Play Only Once!!!',
+ 
+})
+
+})
+
+
 
 
 </script>

@@ -36,7 +36,7 @@
                                     </th>
                                     <th class="">Name</th>
                                     <th class="">Date</th>
-                                    <th class="">Posts</th>
+                                    <th class="">Type</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -54,7 +54,7 @@
                                         <p class="mb-0"> {{ $category->title }}</p>
                                     </td>
                                     <td>{{ $category->created_at->diffForHumans() }}</td>
-                                    <td>180</td>
+                                    <td>{{ $category->category_type }}</td>
                                     <td class="text-center">
                                         <ul class="table-controls">
                                             <li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top"
@@ -69,7 +69,8 @@
                                                         </path>
                                                     </svg></a> </li>
                                             <li><a href="javascript:void(0);" wire:click="editCat({{$category->id}})"
-                                                    data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    data-original-title="Edit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
                                                         width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -79,7 +80,8 @@
                                                         </path>
                                                     </svg></a></li>
                                             <li><a href="javascript:void(0);"
-                                                    wire:click="deleted_cat_id({{ $category->id }})"><svg
+                                                    wire:click="deleted_cat_id({{ $category->id }})">
+                                                    <svg
                                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -163,6 +165,22 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="contact-location">
+                                            <i class="flaticon-location-1"></i>
+                                            <div class="row">
+                                                <label for="basic-url">Category Titile</label>
+                                             <select wire:model="category_type"   class="form-control @error('category_type')is-invalid  @enderror" >
+                                                 <option value="opp" > Opportunities </option>
+                                                 <option value="ent" > Entertainment </option>
+                                             </select>
+
+                                                @error('category_type') <span class="text-danger ">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </form>
@@ -190,7 +208,7 @@
         <div class="modal-dialog " role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h4 class="text-center">Add Category</h4>
+                    <h4 class="text-center">Edit Category</h4>
                     <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
                     <div class="add-contact-box">
                         <div class="add-contact-content">
@@ -210,6 +228,24 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="contact-location">
+                                            <i class="flaticon-location-1"></i>
+                                            <div class="row">
+                                                <label for="basic-url">Category Titile</label>
+                                             <select wire:model="category_type"   class="form-control @error('category_type')is-invalid  @enderror" >
+                                                 <option value="opp" > Opportunities </option>
+                                                 <option value="ent" > Entertainment </option>
+                                             </select>
+
+                                                @error('category_type') <span class="text-danger ">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                             </form>
@@ -222,7 +258,7 @@
 
                         <span style="width: 25px; height:25px" wire:loading wire:target="update_cat"
                             class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
-                        <span wire:loading.class="display-none">Update </span>
+                        <span   wire:target="update_cat"  wire:loading.class="display-none">Update </span>
                     </button>
 
                     <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i> Discard</button>

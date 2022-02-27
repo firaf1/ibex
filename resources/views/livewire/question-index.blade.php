@@ -7,7 +7,35 @@
                                 <div class="widget-header">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="">Questions List</h3>
-                                   <button type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" class=" btn btn-primary">Add Question</button>
+                                  <div class="">
+@if ($is_show != "1")
+    
+<button type="submit" data-toggle="modal" wire:click="showQuestion" class=" btn btn-warning">
+    
+<span style="width: 25px; height:25px" wire:loading wire:target="showQuestion"
+                                        class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
+                                    <span wire:target="showQuestion" wire:loading.class="display-none">Hide</span>
+
+  </button>
+@else     
+<button type="submit" data-toggle="modal" wire:click="hideQuestion" class=" btn btn-success">
+
+<span style="width: 25px; height:25px" wire:loading wire:target="hideQuestion"
+                                        class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
+                                    <span wire:target="hideQuestion" wire:loading.class="display-none">Show</span>
+
+  </button>
+@endif
+
+
+                                  <button type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" class=" btn btn-primary">Add Question</button>
+                                  <button type="submit" data-toggle="modal" wire:click="Dele_Question" class=" btn btn-danger">
+                                  <span style="width: 25px; height:25px" wire:loading wire:target="Dele_Question"
+                                        class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
+                                    <span wire:target="Dele_Question" wire:loading.class="display-none">Delete</span>
+                                  
+                                  </button>
+                                  </div>
                                 </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -16,7 +44,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                              
+                                              <th>Image</th>
                                                     <th class="">Questions</th>
                                                     
                                                     <th class="">Status</th>
@@ -28,6 +56,7 @@
                                                     
                                                 <tr>
                                                    <td> {{ $question->id }} </td>
+                                                   <td> <img style="width:5rem; height:5rem;" src=" {{$question->photo  }} " alt="" srcset="">  </td>
                                                     <td >
                                                         <div class="question-image">
 
@@ -51,7 +80,7 @@
 
                                                     <span style="width: 25px; height:25px" wire:loading wire:target="Approved({{$question->id}})"
                                         class="spinner-border text-white mr-2 align-self-center loader-sm "></span>
-                                    <span wire:target="Approved({{$question->id}})" wire:loading.class="display-none">UnApproved</span>
+                                    <span wire:target="Approved({{$question->id}})" wire:loading.class="display-none">Blocked</span>
 
                                                     </button>
                                                     @endif
@@ -124,11 +153,11 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('storeGame') }} " method="post">
+                                                    <form action="{{ route('storeGame') }} " enctype="multipart/form-data" method="post">
                                                         @csrf
                                                     <div class="question">
 
-                                                        <textarea id="editor1" name="question" cols="100" rows="100" width:100%="" style="visibility: hidden; display: none;"> </textarea>
+                                                        <textarea  name="question" cols="100" rows="5"   > </textarea>
                                                         @error('question') <span class="text-danger ">{{ $message }}</span> @enderror
                                                     </div>
                                                     <div class="form-row mb-2 mt-2">
@@ -152,16 +181,23 @@
                                             </div>
                                         </div>
                                         <div class="form-row mb-2 mt-2">
-                                          
-                                            <div class="col-sm-12">
-                                           <select name="answers" class="form-control" id="">
-                                               <option value="1">First</option>
-                                               <option value="2">Second</option>
-                                               <option value="3">Third</option>
-                                               <option value="4">Fourth</option>
-                                           </select>
+                                          <div class="row">
+
+                                              <div class="col-sm-6">
+                                             <select name="answers" class="form-control" id="">
+                                                 <option value="1">First</option>
+                                                 <option value="2">Second</option>
+                                                 <option value="3">Third</option>
+                                                 <option value="4">Fourth</option>
+                                             </select>
+                                              </div>
+                                              @error('answers') <span class="text-danger ">{{ $message }}</span> @enderror
+
+                                              <div class="col-sm-6">
+                                              <input type="file" class="form-control" name="photo" placeholder="Picture">
+                                             
                                             </div>
-                                            @error('answers') <span class="text-danger ">{{ $message }}</span> @enderror
+                                          </div>
                                         </div>
                                         
                                                 </div>
@@ -181,6 +217,13 @@
     filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
     filebrowserUploadMethod: 'form'
 });
+
+
+
+
+
+
+
 </script>
 
 

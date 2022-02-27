@@ -153,10 +153,12 @@ $totalUsers = User::all()->count();
     $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->get());
     $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get());
     $totalRev = $this->totalRevFun(Subscriber::all());
+ $totalAdmin = User::where('role', 'Admin')->count();
+ $totalUser = User::where('role', 'User')->count();
+ $totaAgent = User::where('role', 'Agent')->count();
 
 
-
-    return view('admin.index', compact(['agents', 'admins', 'users','todayRev','weekRev','totalRev', 'todayTotalUser','totalUsers', 'monthSubscriber']));
+    return view('admin.index', compact(['agents','totalAdmin', 'totalUser', 'totaAgent', 'admins', 'users','todayRev','weekRev','totalRev', 'todayTotalUser','totalUsers', 'monthSubscriber']));
 }
 
 

@@ -16,7 +16,9 @@
         width: 100%;
         display: block;
     }
-	 
+	 .completedImage{
+         width:100%;
+     }
   }
 .radio_button{
     width:32px;

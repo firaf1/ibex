@@ -29,9 +29,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'layouts.homeLayout', 
             function ($view) {
-                $categories =  Category::all();
+                $categories =  Category::where('category_type', 'ent')->get();
                 $blogs = Blog::where('status', '=', '1')->orderBy('created_at', 'desc')->limit(2);
-                $view->with('categories', Category::all(), 'blogs', Blog::all());
+                $opts = Category::where('category_type', 'opt')->get();
+                $view->with('opts', Category::where('category_type', 'opp')->get(),  'blogs', Blog::all());
+                $view->with('categories', Category::where('category_type', 'ent')->get(),);
             }
         );
     }

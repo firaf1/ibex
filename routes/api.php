@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -15,6 +17,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('all-user', function(){
+    return User::all();
+});
+
+
 Route::post('add-user', [UserController::class, 'add_subscriber']);
 Route::post('delete-user', [UserController::class, 'delete_subscriber']);
 
@@ -22,4 +29,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+Route::get('user-exchange', function(){
+  
+ $response = Http::get('http://127.0.0.1:8000/api/all-user');
+   dd($response->json());
+
+
+});
 

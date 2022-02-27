@@ -10,11 +10,11 @@
                                                     <h5 class="modal-title" id="myLargeModalLabel">Edit Question</h5>
                                                  </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('updateGame', $id) }} " method="post">
+                                                    <form action="{{ route('updateGame', $id) }} " enctype="multipart/form-data" method="post">
                                                         @csrf
                                                     <div class="question">
 
-                                                        <textarea id="editor1" name="question" cols="100" rows="100" width:100%="" style="visibility: hidden; display: none;"> {{ $question->question }} </textarea>
+                                                    <textarea   name="question" cols="100" rows="5"   > {{ $question->question }} </textarea>
                                                         @error('question') <span class="text-danger ">{{ $message }}</span> @enderror
                                                     </div>
                                                     <div class="form-row mb-2 mt-2">
@@ -38,19 +38,26 @@
                                             </div>
                                         </div>
                                         <div class="form-row mb-2 mt-2">
-                                          
-                                            <div class="col-sm-12">
-                                                <p>Answer</p>
-                                           <select name="answers" class="form-control" id="">
-                                               @foreach ($choices as $choice)
-                                               <option value="{{ $choice->id }}" <?php if($choice->choice_type != null){
-                                                   echo "selected";
-                                                   
-                                               } ?> >{{ $choice->content }}</option>
-                                               @endforeach
-                                              
-                                           </select>
+                                          <div class="row">
+
+                                              <div class="col-sm-12">
+                                                  <p>Answer</p>
+                                             <select name="answers" class="form-control" id="">
+                                                 @foreach ($choices as $choice)
+                                                 <option value="{{ $choice->id }}" <?php if($choice->choice_type != null){
+                                                     echo "selected";
+                                                     
+                                                 } ?> >{{ $choice->content }}</option>
+                                                 @endforeach
+                                                
+                                             </select>
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                              <input type="file" class="form-control" name="photo" placeholder="Picture">
+                                             
                                             </div>
+                                          </div>
                                             @error('answers') <span class="text-danger ">{{ $message }}</span> @enderror
                                         </div>
                                         

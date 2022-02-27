@@ -121,7 +121,8 @@
                         <table class="table table-bordered table-hover  mb-4">
                             <thead>
                                 <tr>
-                                    <th>User Info</th>
+                                    <th>Agent Info</th>
+                                    <th>Bank Info.</th>
                                     <th>Today</th>
                                     <th>This Week</th>
                                     <th class="text-center">This Month</th>
@@ -166,6 +167,11 @@
 
                                             </div>
                                         </td>
+                                        <td>           
+                                                    <span class="badge badge-warning"> {{ $user->bank_type }} </span>
+                                         
+                                                        <p> {{ $user->account_type }} </p>
+                                                    </td>
                                         <td>
                                             <p class="user-name" data-name="Susan">
                                                 <span class="badge badge-pills badge-primary">
@@ -202,7 +208,7 @@
 
                                             <span class="badge badge-success"> {{ $user->totalSub($user->id) }}
                                             </span>
-                                            <span class="badge badge-danger"> {{ $user->total11($user->id) }} -
+                                            <span class="badge badge-danger"> {{ round(  $user->total11($user->id), 3) }}    -
                                                 birr </span>
 
                                         </td>

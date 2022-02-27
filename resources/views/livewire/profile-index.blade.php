@@ -179,7 +179,7 @@
                                          <p>Select Your Bank Option</p>
                                         <select wire:model.defer="bank" class="form-control ">
                                             <option>Dashin Bank</option>
-                                            <option>Commercial Bank of Ethiopia</option>
+                                            <option>CBE</option>
                                             <option>Abyssinia Bank</option>
                                             <option>Awash Bank</option>
                                         </select>

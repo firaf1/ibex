@@ -23,8 +23,13 @@ class LockedScreen extends Component
              if($user->role == "Agent"){
                 redirect(route('agetIndex'));
              }
-             if($user->role == "Admin")
-            redirect(route('admin'));
+             if($user->role == "Super Admin"){
+                redirect(route('Admin'));
+             }
+             if($user->role == "Admin"){
+
+                 redirect(route('admin'));
+             }
         }else{
             //  dd("ddddd");
             $this->errorMessage = "These credentials do not match our records.";
@@ -32,8 +37,10 @@ class LockedScreen extends Component
         }
     }
     public function dehydrate() {
+
         $this->dispatchBrowserEvent('loginDehydrate', ['newName' => "Vlog is Successfully Blocked"]);
-           }
+           
+    }
            
     public function render()
     {

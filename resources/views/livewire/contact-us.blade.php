@@ -131,7 +131,7 @@
                                 class="pe-7s-map-2 text-theme-colored"></i></a>
                         <div class="media-body">
                             <h5 class="mt-0">@lang('address')</h5>
-                            <p>ሃያሁለት አውራሪስ አከባቢ ሰበያ ህንፃ 1 ፍሎር አዲስአባባ ኢትዮጵያ
+                            <p>bole 22 awraris around hotel
 
                             </p>
                         </div>
@@ -140,14 +140,14 @@
                             href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
                         <div class="media-body">
                             <h5 class="mt-0">@lang('phone_number')</h5>
-                            <p><a href="tel:+325-12345-65478">+251910804901</a></p>
+                            <p><a href="tel:+251910804901">+251910804901</a></p>
                         </div>
                     </div>
                     <div class="icon-box media mb-0 pb-0 pt-0 mt-0"> <a class="media-left pull-left flip mr-15"
                             href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
                         <div class="media-body">
                             <h5 class="mt-0">@lang('email')</h5>
-                            <p><a href="mailto:supporte@yourdomin.com">info@ibexvlog.com
+                            <p><a href="mailto:primecom@ibexvlog.com">primecom@ibexvlog.com
                                 </a></p>
                         </div>
                     </div>

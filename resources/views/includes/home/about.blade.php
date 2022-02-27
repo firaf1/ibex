@@ -110,13 +110,7 @@
 
                               </div>
 
-                                <div class=" p-30">
-
-                                     <!-- Appilication Form Start-->
-                                     <img class="img-fullwidth" alt="" src="{{ asset('front/home/images/advert.jpg')}}">
-                                     <!-- Application Form End-->
-
-                                 </div>
+                             
 
 
                                  @foreach ($blogs as $blog)

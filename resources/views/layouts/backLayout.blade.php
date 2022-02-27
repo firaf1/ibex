@@ -140,6 +140,7 @@
             </div>
 </div>
         </div>
+   
     <!-- END MAIN CONTAINER -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
@@ -184,12 +185,7 @@
 
     <script>
 
-
-
-
-
-
-
+ 
 
 window.addEventListener('successfully_added', event => {
     $('.user_add_modal').modal('hide');
@@ -277,6 +273,41 @@ window.addEventListener('warning_toast', event => {
         backgroundColor: '#e2a03f'
     });
 })
+
+window.addEventListener('All_question_delete', event => {
+ 
+    Snackbar.show({
+        text: "Successfully Deleted",
+        actionTextColor: '#fff',
+        backgroundColor: '#e2a03f'
+    });
+ 
+ 
+ })
+
+ window.addEventListener('hideQuestion', event => {
+ 
+ Snackbar.show({
+     text: "Successfully Hide",
+     actionTextColor: '#fff',
+     backgroundColor: '#e2a03f'
+ });
+
+
+})
+
+
+ window.addEventListener('showQuestion', event => {
+ 
+ 
+    Snackbar.show({
+        text: ' Successfully Showed',
+        actionTextColor: '#fff',
+        backgroundColor: '#4361ee'
+    });
+
+})
+
 
 
 Livewire.on('initializeCkEditor', function () {
