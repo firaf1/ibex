@@ -45,7 +45,7 @@ $days = 1;
     $revenue = 0;
     $revenueSub = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', Auth::user()->id)->where('is_paid', 0)->get();
+    $rows = Subscriber::where('user_id', Auth::user()->id)->where('is_paid', 0)->where('status', 'Approved')->get();
     foreach($rows as $row){
         $fdate = $row->created_at;
 
@@ -67,7 +67,7 @@ $days = 1;
        $weekRev = 0;
        $days11 = 0;
     $tdate = now();
-       $rows = Subscriber::where('user_id', Auth::user()->id)->latest()->get();
+       $rows = Subscriber::where('user_id', Auth::user()->id)->where('status', 'Approved')->latest()->get();
        foreach($rows as $row){
         $fdate = $row->created_at;
         $datetime1 = new DateTime($fdate);
@@ -95,17 +95,17 @@ $days = 1;
 }
 
 
-   $todaySub = Subscriber::whereDate('created_at', Carbon::today())->where('user_id', Auth::user()->id)->count();
-   $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->where('user_id', Auth::user()->id)->get());
+   $todaySub = Subscriber::whereDate('created_at', Carbon::today())->where('status', 'Approved')->where('user_id', Auth::user()->id)->count();
+   $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->where('status', 'Approved')->where('user_id', Auth::user()->id)->get());
 
-   $weekSubscriber = Subscriber::select("*")->where('user_id', Auth::user()->id)->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
-   $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->where('user_id', Auth::user()->id)->get());
+   $weekSubscriber = Subscriber::select("*")->where('user_id', Auth::user()->id)->where('status', 'Approved')->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+   $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->where('status', 'Approved')->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->where('user_id', Auth::user()->id)->get());
   
   
-   $monthSubscriber = Subscriber::whereMonth('created_at', date('m'))
+   $monthSubscriber = Subscriber::whereMonth('created_at', date('m'))->where('status', 'Approved')
 ->whereYear('created_at', date('Y'))->where('user_id', Auth::user()->id)
 ->count();
-$monthRev = $this->totalRevFun(Subscriber::whereMonth('created_at', date('m'))
+$monthRev = $this->totalRevFun(Subscriber::whereMonth('created_at', date('m'))->where('status', 'Approved')
 ->whereYear('created_at', date('Y'))->where('user_id', Auth::user()->id)
 ->get());
 

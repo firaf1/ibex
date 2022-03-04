@@ -3,6 +3,8 @@
  
 use App\Models\Blog;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GameController;
@@ -22,12 +24,46 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
+Route::get('user-register', function(){
+    return view('user_link');
+});
 Route::get('/foo', function () {
     Artisan::call('storage:link');
     dd('hell');
     });
  
+
+    Route::get('copy', function(){
+        // $str = "hello world";
+        // $users = User::where('role', 'Agent')->get();
+        // foreach($users as $user){
+        //     $user->delete();
+        // }
+        // dd( substr($str, 2));
+
+
+        $users = DB::select('select * from customerlist');
+        $count = 0;
+        foreach($users as $user){
+            $temp = substr($user->phone, 3);
+            $newTemp = "0".$temp;
+            $exit = User::where('phone_number', $newTemp)->count();
+            
+            if($exit == 0){
+
+                $newUser = new User();
+               
+                $newUser->phone_number = "0".$temp;
+                $newUser->password = Hash::make($user->pass);
+                $newUser->role = "User";
+                $newUser->save();
+                $count++;
+            }
+        }
+        dd($count);
+    });
+
+
     
     
 Route::get('/clear-cache',function(){
@@ -160,6 +196,7 @@ return view('blocked_account');
     
         return view('welcome', compact('sessionLang'));
     })->name('home');
+
 
 
     Route::get('agent-register', function(){

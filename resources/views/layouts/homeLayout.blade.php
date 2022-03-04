@@ -70,17 +70,16 @@
 <link href="{{ asset('front/home/css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
 <!-- CSS | Responsive media queries -->
 <link href="{{ asset('front/home/css/responsive.css')}}" rel="stylesheet" type="text/css">
-<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
-<!-- <link href="{{ asset('front/home/css/style.css')}}" rel="stylesheet" type="text/css"> -->
-
-<!-- Revolution Slider 5.x CSS settings -->
+ 
 <link  href="{{ asset('front/home/js/revolution-slider/css/settings.css')}}" rel="stylesheet" type="text/css"/>
 <link  href="{{ asset('front/home/js/revolution-slider/css/layers.css')}}" rel="stylesheet" type="text/css"/>
 <link  href="{{ asset('front/home/js/revolution-slider/css/navigation.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('front/home/css/myHome.css') }}">
 <!-- CSS | Theme Color -->
 <link href="{{ asset('front/home/css/colors/theme-skin-color-set-1.css')}}" rel="stylesheet" type="text/css">
-
+<link href=" {{ asset('back/plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href=" {{ asset('back/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
 <!-- external javascripts -->
 <script src="{{ asset('front/home/js/jquery-2.2.4.min.js')}}"></script>
 <script src="{{ asset('front/home/js/jquery-ui.min.js')}}"></script>
@@ -91,16 +90,7 @@
 <!-- Revolution Slider 5.x SCRIPTS -->
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{ asset('front/home/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')}}"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
-<![endif]-->
-
+ 
 @livewireStyles
 
 <style>
@@ -361,9 +351,7 @@ window.addEventListener('successfully_added', event => {
 <!-- JS | Custom script for all pages --> 
 <script src="{{ asset('front/home/js/custom.js')}}"></script>
 
-<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  
-      (Load Extensions only on Local File Systems ! 
-       The following part can be removed on Server for On Demand Loading) --> 
+ 
 <script type="text/javascript" src="{{ asset('front/home/js/revolution-slider/js/extensions/revolution.extension.actions.min.js')}}"></script> 
 <script type="text/javascript" src="{{ asset('front/home/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js')}}"></script> 
 <script type="text/javascript" src="{{ asset('front/home/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js')}}"></script> 
@@ -376,15 +364,10 @@ window.addEventListener('successfully_added', event => {
 
 
 
+<script src="{{ asset('back/plugins/sweetalerts/sweetalert2.min.js ') }}"></script>
+    <script src="{{ asset('back/plugins/sweetalerts/custom-sweetalert.js ') }}"></script>
 
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="e///s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60660475f9ebea0f"></script>
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60660475f9ebea0f"></script>
-
-
+ 
 <script>
      
   window.addEventListener('Add_dot_Class', event => {

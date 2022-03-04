@@ -48,9 +48,9 @@ public function addAgent()
     {
         if($this->search !=null){
 
-            return view('livewire.agent-index',['users' => User::latest()->where('full_name', 'like', '%'.$this->search.'%')->where('role', 'Agent')->orWhere('phone_number', 'like', '%'.$this->search.'%')->orWhere('role', 'like', '%'.$this->search.'%')->paginate(18)]);
+            return view('livewire.agent-index',['users' => User::latest()->where('full_name', '!=', null)->where('full_name', 'like', '%'.$this->search.'%')->where('role', 'Agent')->orWhere('phone_number', 'like', '%'.$this->search.'%')->orWhere('role', 'like', '%'.$this->search.'%')->paginate(18)]);
         }
-        return view('livewire.agent-index',['users' => User::where('role', 'Agent')->latest()->paginate(18)]);
+        return view('livewire.agent-index',['users' => User::where('role', 'Agent')->where('full_name', '!=', null)->latest()->paginate(18)]);
     
 
     }

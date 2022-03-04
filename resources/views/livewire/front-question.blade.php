@@ -4,7 +4,7 @@
 @if($is_show == "1")
 
 @if(!(Session::has('isCompleted')))
-<div id="time22" style="margin-bottom:-1rem" >Remaining Time <span id="time">05:00</span> minutes!</div>
+<div id="time22" style="margin-bottom:-1rem" >Remaining Time <span id="time">0:15</span> minutes!</div>
 @endif
 <div class="result111">
     <h2>Correct:- {{ $correct }} </h2>
@@ -120,7 +120,8 @@ Next
 @endif
 </div>
 
-
+<script src="{{ asset('back/plugins/sweetalerts/sweetalert2.min.js ') }}"></script>
+    <script src="{{ asset('back/plugins/sweetalerts/custom-sweetalert.js ') }}"></script>
 <script>
 
    
@@ -155,6 +156,8 @@ Swal.fire({
 // })
 
 @if(!(Session::has('isCompleted')))
+
+console.log('is not completed!!!!!!')
 Swal.fire(
     " @lang('attention') ",
     "@lang('game_rule')",
@@ -163,7 +166,7 @@ Swal.fire(
     myTime();
 })
 @else 
-
+console.log('is completed!!!!!!!!!')
 Swal.fire({
   icon: 'info',
   title: "@lang('completed')",

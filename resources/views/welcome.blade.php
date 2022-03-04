@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="back/images/favicon.png" />
 
     <!-- CSS Files -->
     <meta property="og:title" content="IBEX Vlogign and Entertainment" />
@@ -30,14 +30,12 @@
     <link rel="stylesheet" href="front/css/flexslider.css" />
     <link rel="stylesheet" href="front/css/font-awesome.css" />
     <link rel="stylesheet" href="front/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="front/css/prettyPhoto.css" />
-    <link rel="stylesheet" href="front/css/responsive.css" />
+     <link rel="stylesheet" href="front/css/responsive.css" />
 
 
 
     <!-- Skin Colors -->
-    <link id="changeable-colors" rel="stylesheet" href="css/colors/blue.css" />
-<style>
+ <style>
  
     .logo img{
         width:100%;
@@ -49,7 +47,7 @@
     }
     @media(max-width: 750px) {
         #mymodal{
-        height:60vh;
+        height:80vh;
     }
     .box{
         height:50vh;
@@ -142,21 +140,28 @@ margin-left:5%;
 
     <script>
     function myopen() {
-
+      
+        document.getElementById('closedIcon').style.display = "block";
         document.getElementById('mymodal').style.display = "block";
         document.getElementById('box').style.height = "85vh";
     }
 
     function myclose() {
+        document.getElementById('closedIcon').style.display = "none";
         document.getElementById('mymodal').style.display = "none";
 
     }
 
     document.getElementById("mymodal").addEventListener('click', e => {
-        if (e.target !== e.currentTarget) console.log("child clicked")
+        if (e.target !== e.currentTarget){
+            console.log("child clicked")
+           
+        } 
+
         else {
             document.getElementById('mymodal').style.display = "none";
             document.getElementById('box').style.height = "0px";
+            document.getElementById('mymodal').style.display = "none";
         }
     });
     </script>

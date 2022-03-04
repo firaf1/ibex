@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ibex User Registration</title>
     <style>
         body{
             margin: 0px;
@@ -12,7 +12,7 @@
             background-image: linear-gradient(#000000a4, #000000d0), url("back.jpg");
             background-repeat: no-repeat;
             background-position: center;
-                background-position: center;
+            background-position: center;
             background-size: cover;
             overflow: hidden;
         }

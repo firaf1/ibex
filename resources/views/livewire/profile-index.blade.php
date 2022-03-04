@@ -35,12 +35,7 @@
                             <div class="widget-content widget-content-area">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="">Profile</h3>
-                                   
-                                   
-                                    
-                             
-                             
-                             
+                                    <a href="user_account_setting.html" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
                                 </div>
                                 <div class="text-center user-info">
                                 @if (Auth::user()->photo != null)
@@ -157,7 +152,7 @@
                         
 
                     </div>
-                 
+
                     <div class="col-xl-8 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
                         <div class="widget-content widget-content-area">
                             
@@ -179,7 +174,7 @@
                                          <p>Select Your Bank Option</p>
                                         <select wire:model.defer="bank" class="form-control ">
                                             <option>Dashin Bank</option>
-                                            <option>CBE</option>
+                                            <option>Commercial Bank of Ethiopia</option>
                                             <option>Abyssinia Bank</option>
                                             <option>Awash Bank</option>
                                         </select>
@@ -203,14 +198,14 @@
                                 <input wire:model.defer="address" type="text" class="form-control @error('address')is-invalid  @enderror" placeholder="address">
                                 @error('address') <span class="text-danger " >{{ $message }}</span> @enderror
                             </div>
-                            <div class="col-12 mt-2 ">
-                            <p>Profile Picture </p>
-                            <div class="form-control">
-                            <label for="profilePic"> Choose Picture .....<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg> </label>
-                            </div>
-                                <input wire:model.defer="picture" type="file" id="profilePic"  hidden class="form-control" placeholder="address">
-                                @error('picture') <span class="text-danger " >{{ $message }}</span> @enderror
-                            </div>
+                            <!--<div class="col-12 mt-2 ">-->
+                            <!--<p>Profile Picture </p>-->
+                            <!--<div class="form-control">-->
+                            <!--<label for="profilePic"> Choose Picture .....<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg> </label>-->
+                            <!--</div>-->
+                            <!--    <input wire:model.defer="picture" type="file" id="profilePic"  hidden class="form-control" placeholder="address">-->
+                            <!--    @error('picture') <span class="text-danger " >{{ $message }}</span> @enderror-->
+                            <!--</div>-->
                         </div>
                     
                     
@@ -230,17 +225,18 @@
                     </div>
 
                     </div>
-                    <div class="col-12 widget-content-area">
+                       <div class="col-12 widget-content-area">
                         <form action="{{ route('agentProfile')}}"  enctype="multipart/form-data" method="post">
                             @csrf
+                            <p> Choose your profiel Picture!</p>
                              <input type="file" name="file"  id="profilePic">
                            <a href="">  <label for="profilePic"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></label>
                             </a>
                             @error('file') <span class="text-danger ">{{ $message }}</span> @enderror
+                             <br>
                                 <button class="btn btn-primary m-3" type="submit">submit</button>
                         </form>
                     </div>
-
 
                 </div>
 </div>

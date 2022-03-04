@@ -238,7 +238,12 @@ window.addEventListener('open_edit_cat_modal', event => {
 
 window.addEventListener('delete_toast', event => {
     
+
     $('#fadeinModal').modal('hide');
+    document.getElementById('subInput').classList.add("is-invalid");
+    document.getElementById('sub_err').style.display="block";
+    document.getElementById('sub_err').innerHTML =  event.detail.newName;
+    console.log('is invalid');
     $('#blogDeletedModal').modal('hide');
     $('#subscriberDeleteModal').modal('hide');
     

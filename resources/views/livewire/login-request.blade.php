@@ -1,8 +1,9 @@
 <div>
+    <span class="close" id="closedIcon" onclick="myclose()" style="opacity:1; position: fixed; top:2rem; right:5rem;  color:red; z-index:99999999999999; font-size:10rem; font-weight:bold; ">
+     <p   > &times;</p>  </span>
     <div class="my-container " id="mymodal">
 
         <div class="box " id="box">
-        <span class="close" id="closedIcon" onclick="myclose()" style="margin:1rem 2rem 0rem 2rem;   font-size:4rem; font-weight:bold; ">&times;</span>
             <div class="row">
                 <div class="col-sm-6 loginIcon" style="height:80vh">
                     <img style="overflow:hidden; width:100%; height:80%;" class="wave" src="MY/login.svg">
@@ -63,8 +64,10 @@
 
     <script>
     function LogingButton() {
+         
         document.getElementById('loginSpan').style.display = "none";
         document.getElementById('loading').style.display = "block";
+  
     }
 
 

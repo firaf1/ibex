@@ -40,6 +40,7 @@ class SubscriberIndex extends Component
         $this->validate();
         $user = User::where('phone_number', $this->phoneNumber)->first();
 if($user){
+
     $subscriber = new Subscriber();
     $subscriber->status = "Approved";
     $subscriber->user_id = Auth::user()->id;
@@ -49,13 +50,30 @@ if($user){
     $this->dispatchBrowserEvent('successfully_added', ['newName' => "Phone Number Successfully Added"]);
     $this->reset();
     $this->render();
+
 }
 else{
-    $this->dispatchBrowserEvent('delete_toast', ['newName' => "Phone Number is not Found or not Subscribe"]);
+                                                                                                                                                                                            
+    $subscriber = new Subscriber();
+    $subscriber->status = "Pending";
+    $subscriber->user_id = Auth::user()->id;
+    $subscriber->phone_number = $this->phoneNumber;
+
+    $subscriber->save();
+    $this->dispatchBrowserEvent('successfully_added', ['newName' => "Phone Number Successfully Added"]);
+    $this->reset();
+    $this->render();
 
 }
 
+
       
+
+
+
+   
+ 
+ 
     }
 
     public function subscriberDeletedId($id)

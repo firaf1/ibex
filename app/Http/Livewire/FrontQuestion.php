@@ -149,7 +149,7 @@ public function mount()
 {
     $show = Setting::find(1);
     $this->is_show = $show->isQuestionShow;
-//    $vv= Session::forget('isCompleted');
+   $vv= Session::forget('isCompleted');
  
     $this->questions = Question::where('status', 'Approved')->get();
 
