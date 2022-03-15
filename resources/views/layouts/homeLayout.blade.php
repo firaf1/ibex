@@ -112,8 +112,8 @@
           <div class="col-md-7">
             <div class="widget no-border m-0">
               <ul class="list-inline sm-text-center mt-5">
-                <li> <i class="fa fa-phone text-theme-colored"></i>   @lang('call')  <a href="#">+251910804901</a> </li>
-                <li> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="#">info@ibexvlog.com</a> </li>
+                <li> <i class="fa fa-phone text-theme-colored"></i>   @lang('call')  <a href="#">0910804901</a> </li>
+                <li> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="#">primecom@ibexvlog.com</a> </li>
               </ul>
             </div>
           </div>
@@ -294,9 +294,9 @@
           <div class="widget dark">
             <h5 class="widget-title line-bottom">@lang('contact_us')</h5>
             <ul class="list-border">
-              <li><a href="#">+251910804901</a></li>
+              <li><a href="#">0910804901</a></li>
               <li><a href="#">primecom@ibexvlog.com</a></li>
-              <li><a href="#" class="lineheight-20">bole 22 awraris around hotel</a></li>
+              <li><a href="#" class="lineheight-20"> bole 22 awraris around hotel</a></li>
             </ul>
             <p class="font-16 text-white mb-5 mt-15">Subscribe</p>
             <form action="course1.html">

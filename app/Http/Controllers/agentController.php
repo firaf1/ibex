@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Session;
 
 class agentController extends Controller
 {
+    public function statusChange()
+    {
+        $subscribers = Subscriber::all();
+        foreach($subscribers as $sub){
+            $user = User::where('phone_number', $sub->phone_number)->count();
+           
+            if($user >0){
+                $sub->status == "Approved";
+                $sub->save();
+            }
+
+           
+        }
+    }
+
+
 
     public function totalRevFun($rows){
          $totalRev = 0;
@@ -110,7 +126,8 @@ $monthRev = $this->totalRevFun(Subscriber::whereMonth('created_at', date('m'))->
 ->get());
 
 
-       return view('agent.index', compact(['todaySub','revenueSub', 'revenue', 'todayRev', 'weekSubscriber', 'weekRev', 'monthSubscriber', 'monthRev']));
+       return view('agent.index', compact(['todaySub','revenueSub', 'revenue', 'todayRev', 'weekSubscriber', 'weekRev', 'monthSubscriber', 'monthRev']))
+       ->with('agentConfirm1211', 'Vlog Successfully Added');
    }
    public function Contact()
    {
@@ -182,7 +199,7 @@ public function frontAgent(Request $request)
     else{
         $user = new User();
         $user->phone_number = $request->phone_number;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->role = "Agent";
          if($user->save()){
             Auth::login($user);

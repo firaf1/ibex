@@ -18,7 +18,7 @@ class SubscriberIndex extends Component
 
     protected $rules = [
   
-        'phoneNumber' => 'required|min:10||unique:subscribers,phone_number',
+        'phoneNumber' => 'required|numeric|max:10|min:10||unique:subscribers,phone_number',
  
     ];
     public function updatingSearch()
@@ -50,7 +50,6 @@ if($user){
     $this->dispatchBrowserEvent('successfully_added', ['newName' => "Phone Number Successfully Added"]);
     $this->reset();
     $this->render();
-
 }
 else{
                                                                                                                                                                                             
@@ -66,14 +65,6 @@ else{
 
 }
 
-
-      
-
-
-
-   
- 
- 
     }
 
     public function subscriberDeletedId($id)

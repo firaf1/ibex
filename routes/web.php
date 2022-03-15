@@ -27,6 +27,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('user-register', function(){
     return view('user_link');
 });
+Route::get('status-change', [agentController::class, 'statusChange'])->name('statusChange');
 Route::get('/foo', function () {
     Artisan::call('storage:link');
     dd('hell');
@@ -35,7 +36,7 @@ Route::get('/foo', function () {
 
     Route::get('copy', function(){
         // $str = "hello world";
-        // $users = User::where('role', 'Agent')->get();
+        // $users = User::where('role', 'User')->get();
         // foreach($users as $user){
         //     $user->delete();
         // }
