@@ -112,26 +112,31 @@
                 <div class="widget-header">
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4>Simple Table</h4>
+
+                            <button wire:click="lastMonth()"id="report2"  onclick="today()" class="btn btn-primary"> Last Month</button> {{ $users->count() }}
                         </div>
                     </div>
                 </div>
-                <div class="widget-content widget-content-area">
+                <div class="widget-content widget-content-area" id="report">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover  mb-4">
+                       @if ($isLastMonth)
+                       <table class="table table-bordered table-hover  mb-4">
                             <thead>
                                 <tr>
                                     <th>Agent Info</th>
                                     <th>Bank Info.</th>
-                                    <th>Today</th>
-                                    <th>This Week</th>
-                                    <th class="text-center">This Month</th>
-                                    <th>Revenue </th>
+
+
+                                    <th class="text-center">Last Month</th>
+                                    <th>Status</th>
+                                    <th>Total Revenue </th>
                                 </tr>
                             </thead>
+
+
                             <tbody>
                                 @foreach($users as $user)
-
+@if($user->checkSub($user->id))
                                     <tr>
                                         <td style="width:15rem;">
                                             <div class="user-profile row">
@@ -144,12 +149,13 @@
                                                     @else
                                                         <div class="avatar avatar-xl " style="margin-left:0rem;">
                                                             <span class="avatar-title">
-                                                                <?php 
-                                                    $position = strpos($user->full_name, ' ');
-                                                    if($position != 0)
-                                                    echo substr( $user->full_name, 0, 1). $user->full_name[$position+1];
-                                                    else echo substr( $user->full_name, 0, 1);
-                                                                ?>
+                                                                <?php
+$position = strpos($user->full_name, ' ');
+if ($position != 0) {
+    echo substr($user->full_name, 0, 1);
+}
+
+?>
                                                          </span>
                                                         </div>
                                                     @endif
@@ -167,9 +173,103 @@
 
                                             </div>
                                         </td>
-                                        <td>           
+                                        <td>
                                                     <span class="badge badge-warning"> {{ $user->bank_type }} </span>
-                                         
+
+                                                        <p> {{ $user->account_type }} </p>
+                                                    </td>
+
+                                        <td>
+                                            <p class="user-name" data-name="Susan">
+                                                <span class="badge badge-pills badge-primary">
+                                                    {{ round($user->lastMonthtotalSub($user->id), 3) }} -subscriber</span>
+                                            </p>
+                                            <span
+                                                class="badge outline-badge-danger">{{round( $user->lastMonthtotal11($user->id), 3) }}-
+                                                birr</span>
+                                            </span>
+
+                                        </td>
+                                        <td class="text-center"><span class="text-info">
+                                            @if($user->statusCheck($user->id) == "Pending")
+                                        <button wire:click="ApprovePayment({{$user->id}})" class="btn btn-success mb-2">Pending</button>
+                                        @elseif ($user->statusCheck($user->id) == "Approved")
+                                        <button wire:click="UpprovePayment({{$user->id}})" class="btn btn-primary mb-2">Approved</button>
+                                        @elseif ($user->statusCheck($user->id) == "Unpproved")
+                                        <button wire:click="ApprovePayment({{$user->id}})" class="btn btn-danger mb-2">Unpproved</button>
+                                        @endif
+                                        </td>
+                                        <td class="text-center">
+
+                                            <span class="badge badge-success"> {{ $user->totalSub($user->id) }}
+                                            </span>
+                                            <span class="badge badge-danger"> {{ round(  $user->total11($user->id), 3) }}    -
+                                                birr </span>
+
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endforeach
+
+                            </tbody>
+
+                        </table>
+
+                       @else <table class="table table-bordered table-hover  mb-4">
+                            <thead>
+                                <tr>
+                                    <th>Agent Info</th>
+                                    <th>Bank Info.</th>
+                                    <th>Today</th>
+                                    <th>This Week</th>
+                                    <th class="text-center">This Month</th>
+                                    <th>Revenue </th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach($users as $user)
+
+                                    <tr>
+                                        <td style="width:15rem;">
+                                            <div class="user-profile row">
+                                                <div class="col-sm-4">
+
+                                                    @if($user->photo != null)
+                                                        <img src="{{ asset($user->photo) }}"
+                                                            style="width: 60px; height: 60px; border-radius:10px;"
+                                                            alt="avatar">
+                                                    @else
+                                                        <div class="avatar avatar-xl " style="margin-left:0rem;">
+                                                            <span class="avatar-title">
+                                                                <?php
+$position = strpos($user->full_name, ' ');
+if ($position != 0) {
+    echo substr($user->full_name, 0, 1);
+}
+
+?>
+                                                         </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+
+                                                <div class="col-sm-8">
+                                                    <div class="user-meta-info">
+                                                        <p class="user-name" data-name="Susan">{{ $user->full_name }}
+                                                        </p>
+                                                        <span
+                                                            class="badge outline-badge-secondary">{{ $user->phone_number }}</span>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                                    <span class="badge badge-warning"> {{ $user->bank_type }} </span>
+
                                                         <p> {{ $user->account_type }} </p>
                                                     </td>
                                         <td>
@@ -216,10 +316,55 @@
                                 @endforeach
 
                             </tbody>
+
                         </table>
+                       @endif
+
                     </div>
 
                     {{ $users->links() }}
                 </div>
             </div>
         </div>
+</div>
+<script>
+                            function today(){
+                                 
+    var block = $('#report');
+    $(block).block({ 
+        message: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>',
+        timeout: 20000, //unblock after 2 seconds
+        overlayCSS: {
+            backgroundColor: '#000',
+            opacity: 0.95,
+            cursor: 'wait'
+        },
+        css: {
+            border: 0,
+            color: '#fff',
+            padding: 0,
+            backgroundColor: 'transparent'
+        }
+    });
+
+
+    var block2 = $('#report2');
+    $(block2).block({ 
+        message: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>',
+        timeout: 20000, //unblock after 2 seconds
+        overlayCSS: {
+            backgroundColor: '#000',
+            opacity: 0.95,
+            cursor: 'wait'
+        },
+        css: {
+            border: 0,
+            color: '#fff',
+            padding: 0,
+            backgroundColor: 'transparent'
+        }
+    });
+                            }
+  
+                        </script>
+</div>

@@ -18,7 +18,6 @@ class agentController extends Controller
         $subscribers = Subscriber::all();
         foreach($subscribers as $sub){
             $user = User::where('phone_number', $sub->phone_number)->count();
-           
             if($user >0){
                 $sub->status == "Approved";
                 $sub->save();
@@ -114,8 +113,8 @@ $days = 1;
    $todaySub = Subscriber::whereDate('created_at', Carbon::today())->where('status', 'Approved')->where('user_id', Auth::user()->id)->count();
    $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->where('status', 'Approved')->where('user_id', Auth::user()->id)->get());
 
-   $weekSubscriber = Subscriber::select("*")->where('user_id', Auth::user()->id)->where('status', 'Approved')->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
-   $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->where('status', 'Approved')->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->where('user_id', Auth::user()->id)->get());
+   $weekSubscriber = Subscriber::where('user_id', Auth::user()->id)->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->count();
+   $weekRev = $this->totalRevFun(Subscriber::latest()->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->where('user_id', Auth::user()->id)->get());
   
   
    $monthSubscriber = Subscriber::whereMonth('created_at', date('m'))->where('status', 'Approved')
@@ -128,6 +127,9 @@ $monthRev = $this->totalRevFun(Subscriber::whereMonth('created_at', date('m'))->
 
        return view('agent.index', compact(['todaySub','revenueSub', 'revenue', 'todayRev', 'weekSubscriber', 'weekRev', 'monthSubscriber', 'monthRev']))
        ->with('agentConfirm1211', 'Vlog Successfully Added');
+    
+
+
    }
    public function Contact()
    {
@@ -168,7 +170,7 @@ $totalUsers = User::all()->count();
     $users = User::where('role', 'User')->latest()->paginate(10);
 
     $todayRev = $this->totalRevFun(Subscriber::latest()->whereDate('created_at', Carbon::today())->get());
-    $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get());
+    $weekRev = $this->totalRevFun(Subscriber::latest()->select("*")->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->get());
     $totalRev = $this->totalRevFun(Subscriber::all());
  $totalAdmin = User::where('role', 'Admin')->count();
  $totalUser = User::where('role', 'User')->count();

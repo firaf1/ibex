@@ -46,6 +46,24 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+
+    public function statusCheck($id)
+    {
+        $var = Subscriber::where('user_id', $id)->where('status', 'Approved')->first();
+        if($var->is_paid==0){
+return "Pending";
+        }
+        elseif($var->is_paid == 1){
+            return "Approved";
+
+        }
+        elseif($var->is_paid == 2){
+            return "Unpproved";
+        }
+
+    }
+
+
     public function todayRev($id){
         $rows = Subscriber::latest()->whereDate('created_at', Carbon::today())->where('user_id', $id)->get();
         $totalRev = 0;
@@ -158,7 +176,7 @@ public function total11($id)
 {
     $totalRev = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', $id)->where('is_paid', 0)->get();
+    $rows = Subscriber::where('user_id', $id)->get();
     foreach($rows as $row){
         $fdate = $row->created_at;
 
@@ -178,7 +196,7 @@ public function totalSub($id)
 {
     $totalRev = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', $id)->where('is_paid', 0)->get();
+    $rows = Subscriber::where('user_id', $id)->get();
     foreach($rows as $row){
         $fdate = $row->created_at;
 
@@ -194,6 +212,72 @@ public function totalSub($id)
     }
     return $totalRev;
 }
+public function lastMonthtotalSub($id)
+{
+    $totalRev = 0;
+    $tdate = now();
+    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->get();
+    foreach($rows as $row){
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        
+        if($days > 0){
+                       $totalRev++;
+                   }
+        
+    }
+    return $totalRev;
+}
+public function lastMonthtotal11($id)
+{
+    $totalRev = 0;
+    $tdate = now();
+    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->get();
+    foreach($rows as $row){
+        $fdate = $row->created_at;
+
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        
+        if($days > 0){
+                       $totalRev = $totalRev + ($days*(2/30));
+                   }
+        
+    }
+    return $totalRev;
+}
+
+public function TotalWorkingAgent()
+{
+    return "hellow ";
+}
+
+public function checkSub($id)
+{
+    $row = Subscriber::where('user_id', $id)->where('status', "Approved")->count();
+    if($row == 0){
+        return false;
+
+    }
+    else return true;
+}
+
+
+public function subs()
+{
+    return $this->belongsTo(Subscriber::class, 'user_id');
+
+}
+
+
+
+
 
     /**
      * The attributes that should be cast to native types.

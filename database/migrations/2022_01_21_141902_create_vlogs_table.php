@@ -20,8 +20,9 @@ class CreateVlogsTable extends Migration
             $table->integer('status');
             $table->text('description');
             $table->string('categories_id');
-            $table->string('language_id');
-            $table->string('user_id');
+            $table->string('language_id'); 
+            $table->interger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('thumbnail');
             $table->timestamps();
         });

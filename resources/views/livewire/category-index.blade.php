@@ -174,6 +174,7 @@
                                              <select wire:model="category_type"   class="form-control @error('category_type')is-invalid  @enderror" >
                                                  <option value="opp" > Opportunities </option>
                                                  <option value="ent" > Entertainment </option>
+                                                 <option value="tech" > Techinology </option>
                                              </select>
 
                                                 @error('category_type') <span class="text-danger ">{{ $message }}</span>
@@ -237,6 +238,7 @@
                                              <select wire:model="category_type"   class="form-control @error('category_type')is-invalid  @enderror" >
                                                  <option value="opp" > Opportunities </option>
                                                  <option value="ent" > Entertainment </option>
+                                                 <option value="tech" > Techinology </option>
                                              </select>
 
                                                 @error('category_type') <span class="text-danger ">{{ $message }}</span>

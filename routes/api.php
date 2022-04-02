@@ -29,7 +29,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::get('sms', function(){
+    $response = Http::post('http://example.com/users', [
+        'phone_number' => 'Steve',
+        'role' => 'Network Administrator',
+    ]);
+});
 
 Route::get('user-exchange', function(){
   

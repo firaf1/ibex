@@ -62,7 +62,7 @@ public function password_update(){
 
     $user = User::find(Auth::user()->id);
     if(Hash::check($this->password, $user->password)){
-        dd('ddd');
+        // dd('ddd');
         if($this->password_confirmation == $this->newPassword){
            $user->password = Hash::make($this->newPassword);
            $user->save();
