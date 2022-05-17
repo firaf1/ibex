@@ -19,7 +19,7 @@
                         <label for="inputAddress">Title</label>
                         <input type="text"   name="title"  class="form-control @error('title')is-invalid  @enderror" placeholder="Title">
                         <small id="emailHelp1" class="form-text text-muted">This will be title of the article</small>
-
+                     
                         @error('title') <span class="text-danger ">{{ $message }}</span> @enderror
                     </div>
                     <div class="row">
@@ -35,8 +35,8 @@
                                 @foreach ($languages as $language)
                                 <option value=" {{ $language->id }} "> {{ $language->language }} </option>
                                 @endforeach
-
-
+                            
+                          
                             </select>
                             @error('language') <span class="text-danger ">{{ $message }}</span> @enderror
                         </div>
@@ -44,19 +44,18 @@
                             <label for="inputPassword4">Post Category</label>
                             <select  name="category" id="" class="form-control @error('category')is-invalid  @enderror">
                                 @foreach ($categories as $category)
-
-
+                                
+                                
                                 <option   value="{{ $category->id}}"> {{ $category->title}} </option>
-
+                            
                                 @endforeach
-                             </select>
-
+                            </select>
                             @error('category') <span class="text-danger ">{{ $message }}</span> @enderror
                         </div>
                     </div>
-
-
-
+                  
+                      
+                    
                     <input type="text" name="des" id="des" hidden>
                     <textarea id="editor1" name="summaryckeditor" cols="100" rows="100" width:100%="" style="visibility: hidden; display: none;"> </textarea>
                     @error('des') <span class="text-danger ">{{ $message }}</span> @enderror
@@ -77,7 +76,7 @@
 <script>
 // timer = setInterval(updateDiv,100);
 function updateValue() {
-
+     
     var editorText = CKEDITOR.instances.editor1.getData();
     document.getElementById('des').value = editorText;
     Livewire.emit('postAdded', editorText)

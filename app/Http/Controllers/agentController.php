@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Contact;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -60,7 +61,7 @@ $days = 1;
     $revenue = 0;
     $revenueSub = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', Auth::user()->id)->where('is_paid', 0)->where('status', 'Approved')->get();
+    $rows = Subscriber::where('user_id', Auth::user()->id)->where('is_paid', 0)->whereMonth('created_at','!=', Carbon::now()->month)->where('status', 'Approved')->get();
     foreach($rows as $row){
         $fdate = $row->created_at;
 
@@ -69,10 +70,20 @@ $days = 1;
         $interval = $datetime1->diff($datetime2);
         $days = $interval->format('%a');
         
-        if($days > 0){
-                       $revenue = $revenue + ($days*(2/30));
+        
+            
+             if($days > 0 && $days < 31){
+                         $revenue = $revenue + ($days*(2/30));
                        $revenueSub ++;
                    }
+        else if($days >= 31){
+            
+            $revenue =  $revenue + 2;
+             $revenueSub ++;
+        }
+            
+                       
+                 
         
     }
      
@@ -82,7 +93,7 @@ $days = 1;
        $weekRev = 0;
        $days11 = 0;
     $tdate = now();
-       $rows = Subscriber::where('user_id', Auth::user()->id)->where('status', 'Approved')->latest()->get();
+       $rows = Subscriber::where('user_id', Auth::user()->id)->where('status', 'Approved')->whereMonth('created_at','!=', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->latest()->get();
        foreach($rows as $row){
         $fdate = $row->created_at;
         $datetime1 = new DateTime($fdate);

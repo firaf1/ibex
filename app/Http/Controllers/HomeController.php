@@ -26,7 +26,6 @@ class HomeController extends Controller
      
         return view('home.index', compact(['blogs']));
     }
-  
     public function vlogList($title)
     {
 
@@ -52,8 +51,6 @@ $categories = Category::all();
     $blogs = Blog::where('status', '1')->orderBy('created_at', 'desc')->limit(4)->get();
     return view('home.blog_list', compact(['blogs', 'blogs1','currentCategory', 'categories']));
 }
-
-
 public function blogCategory($title)
 {
     $currentCategory = Category::where('title', $title)->first();

@@ -11,7 +11,7 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="title text-white text-center">አይቤክስ opportunities</h2>
+              <h2 class="title text-white text-center">አይቤክስ </h2>
              <ol class="breadcrumb text-left text-black mt-10">
               
               </ol>
@@ -34,27 +34,21 @@
           
           
 
- @foreach ($vlogs11 as $vlog)
- <div class="row mb-15">
+ @foreach ($vlogs11 as $blog)
+  <div class="row mb-15">
               <div class="col-sm-6 col-md-4">
-               <div class="fluid-width-video-wrapper" style="padding-top: 63.7143%;">
-
-{!! $vlog->video !!}
-
-            </div>
+               <div class="thumb"> <img alt="featured project" src="{{ asset($blog->image) }}" class="img-fullwidth"></div>
               </div>
               <div class="col-sm-6 col-md-8">
-                <h4 class="line-bottom mt-0 mt-sm-20">  {{ $vlog->title }} </h4>
+                <h4 class="line-bottom mt-0 mt-sm-20">{{ $blog->title }}</h4>
                 <ul class="review_text list-inline">
                
                 </ul>
-               
-               
-              </h4></div>
+                <p> {!! Str::limit( $blog->description , 100, ' ...')   !!}..</p>
+                <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="{{ route('blogDetail', $blog->id) }}">@lang('read_more')</a>
+              </div>
             </div>
- 
- <hr>
-
+            <hr>
 
  @endforeach
  @if ($vlogs11->count() == 0)
@@ -67,7 +61,7 @@
             </div>
               </div>
               <div class="col-sm-6 col-md-8">
-                <h4 class="line-bottom mt-0 mt-sm-20 text-danger"> Not Blog is found under this category </h4>
+                <h4 class="line-bottom mt-0 mt-sm-20 text-danger"> No Blog is found under this category </h4>
                 <ul class="review_text list-inline">
                
                 </ul>

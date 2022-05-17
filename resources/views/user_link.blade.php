@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibex User Registration</title>
+    <meta property="og:title" content="IBEX Vlogign and Entertainment" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://ibexvlog.com/"/>
+    <meta property="og:image" content="{{ asset('MY/LOGO/logo-wide.png') }}"/>
+    <meta property="og:site_name" content="https://ibexvlog.com/"/>
+    <meta property="og:description" content="IBEX is a platforme that Focus on Vlogign and Entertainment Our goal is to create a tech-savvy citizen! EthioTitor has experienced and educated information technology professionals."/>
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    <meta property="og:type" content="article" />
+    <title>IBEX</title>
     <style>
         body{
             margin: 0px;
@@ -12,7 +21,7 @@
             background-image: linear-gradient(#000000a4, #000000d0), url("back.jpg");
             background-repeat: no-repeat;
             background-position: center;
-            background-position: center;
+                background-position: center;
             background-size: cover;
             overflow: hidden;
         }
@@ -45,9 +54,14 @@
 <body>
     <div class="container" >
         <div class="box">
+<!--<a href="sms:+123456789?body=Question%20from%20me">Send me a SMS</a>-->
 
             <a href="sms:9611?body=ok">Join </a>
         </div>
     </div>
+    <script>
+        
+        window.location.href = "sms:9611?body=" + "ok";
+    </script>
 </body>
 </html>

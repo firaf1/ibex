@@ -43,7 +43,7 @@ public function addAgent()
 }
 public function lastMonth()
 {
-    if(!($this->isLastMonth)){
+     if(!($this->isLastMonth)){
 
          $this->isLastMonth = true;
         $this->resetPage();
@@ -88,7 +88,7 @@ $this->resetPage();
         // User::whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->paginate(50)
         if($this->isLastMonth){
 
-            return view('livewire.agent-index',['users' =>  User::where('role', 'Agent')->where('bank_type', '!=', null)->with('subs')->paginate(500)]);
+            return view('livewire.agent-index',['users' =>  User::where('role', 'Agent')->where('bank_type', '!=', null)->with('subs')->paginate(600)]);
 
         }
         if($this->search !=null){

@@ -17,6 +17,8 @@ class isProfile
      */
     public function handle(Request $request, Closure $next)
     {
+        if(Auth::user()->role != "User"){
+            
         if(Auth::user()->role == null || Auth::user()->full_name == null ||Auth::user()->email == null || Auth::user()->status == null|| Auth::user()->address == null)
         {
 
@@ -24,7 +26,9 @@ class isProfile
         }
         else 
         return $next($request);
-
+        }
+ else 
+        return $next($request);
         
     }
 }

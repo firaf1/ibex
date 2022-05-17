@@ -51,9 +51,6 @@
                                 <option   value="{{ $category->id}}"> {{ $category->title}} </option>
                                 @endif
                                 @endforeach
-                                @if ($category->id == "ibex_tech")
-                                <option selected value="ibex_tech">Ibext Tech </option>
-                                @endif
                             </select>
                             @error('category') <span class="text-danger ">{{ $message }}</span> @enderror
                         </div>

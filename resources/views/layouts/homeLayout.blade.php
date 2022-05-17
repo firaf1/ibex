@@ -157,7 +157,7 @@
                   @foreach ($categories as $category)
                   <li><a href="{{ route('catagoryVlogList', $category->title) }}">{{ $category->title }}</a></li>
                   @endforeach
-                
+                  <li><a href="{{ route('gameIndex') }}">Ibex Game</a></li>
                   <!-- <li><a href="course1.html">አይቤክስ opportunities </a></li>
                   <li><a href="course2.html">አይቤክስ Game Show </a></li>
                   <li><a href="course3.html">አይቤክስ Entertainment </a></li>
@@ -172,8 +172,8 @@
                 <ul class="dropdown">
                   @foreach ($opts as $opportunitie)
                   <li><a href="{{ route('catagoryVlogList', $opportunitie->title) }}">{{ $opportunitie->title }}</a></li>
+                
                   @endforeach
-                  <li><a href="{{ route('gameIndex') }}">Ibex Game</a></li>
                 
                   <!-- <li><a href="course1.html">አይቤክስ opportunities </a></li>
                   <li><a href="course2.html">አይቤክስ Game Show </a></li>
@@ -183,7 +183,7 @@
                  
                 </ul>
               </li> 
-              <li><a href="#home"> Ibex Tech</a>
+               <li><a href="#home"> Ibex Tech</a>
                 <ul class="dropdown">
                   @foreach ($tech as $opportunitie)
                   <li><a href="{{ route('catagoryVlogList', $opportunitie->title) }}">{{ $opportunitie->title }}</a></li>
@@ -191,7 +191,7 @@
                   
                 </ul>
               </li>
-              <li><a href="{{ route('blogsList') }}">@lang('blogs')</a></li>
+               <li><a href="{{ route('blogsList') }}"> @lang('blogs')</a></li>
               <li><a href="{{ route('contact') }}">@lang('contact_us')</a></li>
               @if (Auth::check())
                 

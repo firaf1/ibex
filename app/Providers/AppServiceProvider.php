@@ -32,10 +32,9 @@ class AppServiceProvider extends ServiceProvider
                 $categories =  Category::where('category_type', 'ent')->get();
                 $blogs = Blog::where('status', '=', '1')->orderBy('created_at', 'desc')->limit(2);
                 $opts = Category::where('category_type', 'opt')->get();
-                $tech = Category::where('category_type', 'tech')->get();
                 $view->with('opts', Category::where('category_type', 'opp')->get(),  'blogs', Blog::all());
-                $view->with('categories', Category::where('category_type', 'ent')->get(),);
-                $view->with('tech', Category::where('category_type', 'tech')->get());
+                $view->with('categories', Category::where('category_type', 'ent')->get());
+                 $view->with('tech', Category::where('category_type', 'tech')->get());
             }
         );
     }

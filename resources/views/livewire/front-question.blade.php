@@ -156,7 +156,6 @@ Swal.fire({
 // })
 
 @if(!(Session::has('isCompleted')))
-
 console.log('is not completed!!!!!!')
 Swal.fire(
     " @lang('attention') ",

@@ -185,12 +185,7 @@
 
     <script>
 
-                                  
-                                  $('#AgentMessage').modal('show');
-                           
- console.log('....')
-                                    
-                           
+ 
 
 window.addEventListener('successfully_added', event => {
     $('.user_add_modal').modal('hide');

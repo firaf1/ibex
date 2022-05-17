@@ -84,7 +84,7 @@ margin-left:5%;
                 <div class="image5 pattern-black"></div>
                 <!-- End Slider Images -->
             </div>
-<div class="lang">
+<div class="lang" style="margin-top:1rem;">
     <ul>
  
 

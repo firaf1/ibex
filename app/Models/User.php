@@ -185,9 +185,13 @@ public function total11($id)
         $interval = $datetime1->diff($datetime2);
         $days = $interval->format('%a');
         
-        if($days > 0){
+       if($days > 0 && $days < 31){
                        $totalRev = $totalRev + ($days*(2/30));
                    }
+        else if($days >= 31){
+            
+            $totalRev =  $totalRev + 2;
+        }
         
     }
     return $totalRev;
@@ -216,27 +220,29 @@ public function lastMonthtotalSub($id)
 {
     $totalRev = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->get();
-    foreach($rows as $row){
-        $fdate = $row->created_at;
+       $month  = 3;
+    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at','!=', Carbon::now()->month)->count();
+    // foreach($rows as $row){
+    //     $fdate = $row->created_at;
 
-        $datetime1 = new DateTime($fdate);
-        $datetime2 = new DateTime($tdate);
-        $interval = $datetime1->diff($datetime2);
-        $days = $interval->format('%a');
+    //     $datetime1 = new DateTime($fdate);
+    //     $datetime2 = new DateTime($tdate);
+    //     $interval = $datetime1->diff($datetime2);
+    //     $days = $interval->format('%a');
         
-        if($days > 0){
-                       $totalRev++;
-                   }
+    //     if($days > 0){
+    //                   $totalRev++;
+    //               }
         
-    }
-    return $totalRev;
+    // }
+    return $rows;
 }
 public function lastMonthtotal11($id)
 {
     $totalRev = 0;
     $tdate = now();
-    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->get();
+    $month  = 3;
+    $rows = Subscriber::where('user_id', $id)->where('status', 'Approved')->whereMonth('created_at','!=', Carbon::now()->month)->get();
     foreach($rows as $row){
         $fdate = $row->created_at;
 
@@ -245,9 +251,13 @@ public function lastMonthtotal11($id)
         $interval = $datetime1->diff($datetime2);
         $days = $interval->format('%a');
         
-        if($days > 0){
+        if($days > 0 && $days < 31){
                        $totalRev = $totalRev + ($days*(2/30));
                    }
+        else if($days >= 31){
+            
+            $totalRev =  $totalRev + 2;
+        }
         
     }
     return $totalRev;
